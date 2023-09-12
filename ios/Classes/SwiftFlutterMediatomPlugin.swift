@@ -3,8 +3,11 @@ import MSaas
 import UIKit
 
 public class SwiftFlutterMediatomPlugin: NSObject, FlutterPlugin {
+    // 开屏广告
     private var splashAd: FlutterMediatomSplash?
-    
+    // 插屏广告
+    private var interstitialAd: FlutterMediatomInterstitial?
+
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "flutter_mediatom", binaryMessenger: registrar.messenger())
         let instance = SwiftFlutterMediatomPlugin()
@@ -21,6 +24,7 @@ public class SwiftFlutterMediatomPlugin: NSObject, FlutterPlugin {
             splashAd = FlutterMediatomSplash()
             result(true)
         case "showInterstitialAd":
+            interstitialAd = FlutterMediatomInterstitial()
             result(true)
         default:
             result(FlutterMethodNotImplemented)

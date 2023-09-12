@@ -10,4 +10,9 @@ class FlutterMediatom {
   static Future<void> showSplashAd() {
     return FlutterMediatomPlatform.instance.showSplashAd();
   }
+
+  /// 显示开屏广告
+  static Future<void> showInterstitialAd() {
+    return FlutterMediatomPlatform.instance.showInterstitialAd();
+  }
 }

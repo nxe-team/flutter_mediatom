@@ -30,4 +30,8 @@ abstract class FlutterMediatomPlatform extends PlatformInterface {
   Future<void> showSplashAd() {
     throw UnimplementedError('showSplashAd() has not been implemented.');
   }
+
+  Future<void> showInterstitialAd() {
+    throw UnimplementedError('showInterstitialAd() has not been implemented.');
+  }
 }

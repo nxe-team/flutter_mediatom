@@ -19,6 +19,11 @@ class _HomePageState extends State<HomePage> {
     FlutterMediatom.showSplashAd();
   }
 
+  /// 显示插屏广告
+  void _showInterstitialAd() {
+    FlutterMediatom.showInterstitialAd();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -31,6 +36,10 @@ class _HomePageState extends State<HomePage> {
           MaterialButton(
             onPressed: _showSplashAd,
             child: const Text('开屏广告'),
+          ),
+          MaterialButton(
+            onPressed: _showInterstitialAd,
+            child: const Text('插屏广告'),
           ),
         ],
       ),

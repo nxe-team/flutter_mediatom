@@ -19,4 +19,9 @@ class MethodChannelFlutterMediatom extends FlutterMediatomPlatform {
   Future<void> showSplashAd() async {
     await methodChannel.invokeMethod('showSplashAd');
   }
+
+  @override
+  Future<void> showInterstitialAd() async {
+    await methodChannel.invokeMethod('showInterstitialAd');
+  }
 }
