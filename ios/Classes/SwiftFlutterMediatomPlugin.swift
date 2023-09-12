@@ -9,9 +9,14 @@ public class SwiftFlutterMediatomPlugin: NSObject, FlutterPlugin {
     private var interstitialAd: FlutterMediatomInterstitial?
 
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "flutter_mediatom", binaryMessenger: registrar.messenger())
+        let messenger = registrar.messenger()
+        let channel = FlutterMethodChannel(
+            name: FlutterMediatomChannel.plugin.rawValue,
+            binaryMessenger: registrar.messenger())
         let instance = SwiftFlutterMediatomPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
+        // 注册信息流广告 PlatformView
+        registrar.register(FlutterMediatomFeedFactory(messenger: messenger), withId: FlutterMediatomChannel.feed_ad.rawValue)
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

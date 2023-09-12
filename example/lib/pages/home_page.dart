@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mediatom/flutter_mediatom.dart';
+import 'package:flutter_mediatom_example/pages/feed_demo.dart';
 
+/// 首页
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -24,6 +26,12 @@ class _HomePageState extends State<HomePage> {
     FlutterMediatom.showInterstitialAd();
   }
 
+  /// 显示信息流广告
+  void _showFeedAd() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const FeedDemo()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -40,6 +48,10 @@ class _HomePageState extends State<HomePage> {
           MaterialButton(
             onPressed: _showInterstitialAd,
             child: const Text('插屏广告'),
+          ),
+          MaterialButton(
+            onPressed: _showFeedAd,
+            child: const Text('信息流广告'),
           ),
         ],
       ),
