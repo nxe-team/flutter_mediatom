@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mediatom/flutter_mediatom.dart';
+import 'package:flutter_mediatom_example/config/ad_config.dart';
 import 'package:flutter_mediatom_example/pages/feed_demo.dart';
 
 /// 首页
@@ -13,17 +14,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   /// 初始化SDK
   void _initSDK() {
-    FlutterMediatom.initSDK();
+    FlutterMediatom.initSDK(appId: AdConfig.appId);
   }
 
   /// 显示开屏广告
   void _showSplashAd() {
-    FlutterMediatom.showSplashAd();
+    FlutterMediatom.showSplashAd(
+      slotId: AdConfig.splashId,
+      logo: 'splash_logo',
+    );
   }
 
   /// 显示插屏广告
   void _showInterstitialAd() {
-    FlutterMediatom.showInterstitialAd();
+    FlutterMediatom.showInterstitialAd(slotId: AdConfig.interstitialId);
   }
 
   /// 显示信息流广告

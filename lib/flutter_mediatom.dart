@@ -1,18 +1,83 @@
-import 'flutter_mediatom_platform_interface.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_mediatom/constants/platform_channel.dart';
 
 class FlutterMediatom {
+  @visibleForTesting
+  static final methodChannel = MethodChannel(PlatformChannel.plugin.name);
+
   /// 初始化SDK
-  static Future<bool> initSDK() {
-    return FlutterMediatomPlatform.instance.initSDK();
+  static Future<bool> initSDK({required String appId}) async {
+    final result = await methodChannel.invokeMethod<bool>('initSDK', {
+      'appId': appId,
+    });
+    return result ?? false;
   }
 
   /// 显示开屏广告
-  static Future<void> showSplashAd() {
-    return FlutterMediatomPlatform.instance.showSplashAd();
+  static Future<void> showSplashAd({
+    required String slotId,
+    String? logo,
+    Function? onAdLoadSuccess,
+    Function? onAdLoadFail,
+    Function? onAdRenderSuccess,
+    Function? onAdDidClick,
+    Function? onAdDidClose,
+  }) {
+    MethodChannel(PlatformChannel.splashAd.name)
+        .setMethodCallHandler((call) async {
+      switch (call.method) {
+        case 'onAdLoadSuccess':
+          onAdLoadSuccess?.call();
+          break;
+        case 'onAdLoadFail':
+          onAdLoadFail?.call();
+          break;
+        case 'onAdRenderSuccess':
+          onAdRenderSuccess?.call();
+          break;
+        case 'onAdDidClick':
+          onAdDidClick?.call();
+          break;
+        case 'onAdDidClose':
+          onAdDidClose?.call();
+          break;
+      }
+    });
+    return methodChannel.invokeMethod('showSplashAd', {
+      'slotId': slotId,
+      'logo': logo,
+    });
   }
 
   /// 显示开屏广告
-  static Future<void> showInterstitialAd() {
-    return FlutterMediatomPlatform.instance.showInterstitialAd();
+  static Future<void> showInterstitialAd({
+    required String slotId,
+    String? logo,
+    Function? onAdLoadSuccess,
+    Function? onAdLoadFail,
+    Function? onAdDidClick,
+    Function? onAdDidClose,
+  }) {
+    MethodChannel(PlatformChannel.interstitialAd.name)
+        .setMethodCallHandler((call) async {
+      switch (call.method) {
+        case 'onAdLoadSuccess':
+          onAdLoadSuccess?.call();
+          break;
+        case 'onAdLoadFail':
+          onAdLoadFail?.call();
+          break;
+        case 'onAdDidClick':
+          onAdDidClick?.call();
+          break;
+        case 'onAdDidClose':
+          onAdDidClose?.call();
+          break;
+      }
+    });
+    return methodChannel.invokeMethod('showInterstitialAd', {
+      'slotId': slotId,
+    });
   }
 }

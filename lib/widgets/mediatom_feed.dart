@@ -5,10 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mediatom/constants/platform_channel.dart';
 
 class MediatomFeed extends StatefulWidget {
+  /// 广告位ID
+  final String slotId;
+
   /// 广告渲染成功
   final void Function(double height)? onAdRenderSuccess;
 
-  const MediatomFeed({super.key, this.onAdRenderSuccess});
+  const MediatomFeed({super.key, required this.slotId, this.onAdRenderSuccess});
 
   @override
   State<MediatomFeed> createState() => _MediatomFeedState();
@@ -51,7 +54,7 @@ class _MediatomFeedState extends State<MediatomFeed> {
     return UiKitView(
       viewType: PlatformChannel.feedAd.name,
       layoutDirection: TextDirection.ltr,
-      creationParams: const {'slotId': ''},
+      creationParams: {'slotId': widget.slotId},
       creationParamsCodec: const StandardMessageCodec(),
       onPlatformViewCreated: (int id) {
         _methodChannel = MethodChannel('${PlatformChannel.feedAd.name}/$id');

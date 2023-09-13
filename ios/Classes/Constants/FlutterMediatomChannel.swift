@@ -10,6 +10,10 @@ import Foundation
 enum FlutterMediatomChannel: String {
     // 插件自身通道
     case plugin = "flutter_mediatom"
+    // 开屏广告通道
+    case splashAd = "flutter_mediatom_splash_ad"
+    // 插屏广告通道
+    case interstitialAd = "flutter_mediatom_interstitial_ad"
     // 信息流广告通道
-    case feed_ad = "flutter_mediatom_feed_ad"
+    case feedAd = "flutter_mediatom_feed_ad"
 }

@@ -36,12 +36,12 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
     }
 
     init(frame: CGRect, id: Int64, args: [String: Any], messenger: FlutterBinaryMessenger) {
-        methodChannel = FlutterMethodChannel(name: "\(FlutterMediatomChannel.feed_ad.rawValue)/\(id)", binaryMessenger: messenger)
+        methodChannel = FlutterMethodChannel(name: "\(FlutterMediatomChannel.feedAd.rawValue)/\(id)", binaryMessenger: messenger)
         container = UIView()
         manager = SFNativeManager()
         super.init()
         manager.delegate = self
-        manager.mediaId = "5bea84e52ecdc13a"
+        manager.mediaId = args["slotId"] as! String
         manager.adCount = 1
         manager.size = CGSizeMake(UIScreen.main.bounds.size.width, 0)
         manager.showAdController = FlutterMediatomUtil.getVC()
@@ -57,6 +57,7 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
     // 广告加载成功
     // 加载完成时获取广告高度部分素材为 0
     func nativeAdDidLoad(_ datas: [SFFeedAdData]) {
+        postMessage("onAdDidLoad")
         let adData: SFFeedAdData = datas.first!
         // 模板广告
         if let ad = adData.adView {
@@ -75,6 +76,7 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
     // 广告加载失败
     func nativeAdDidFailed(_ error: Error) {
         print("信息流广告加载失败", error)
+        postMessage("onAdLoadFail")
     }
 
     // 广告渲染成功 自渲染也会回调
@@ -84,5 +86,15 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
                 "height": adView.bounds.height
             ])
         }
+    }
+
+    // 广告被点击
+    func nativeAdDidClicked() {
+        postMessage("onAdDidClick")
+    }
+
+    // 广告已关闭
+    func nativeAdDidClose(withADView nativeAdView: UIView) {
+        postMessage("onAdDidClose")
     }
 }

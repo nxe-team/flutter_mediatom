@@ -9,30 +9,49 @@ import Foundation
 import MSaas
 
 class FlutterMediatomInterstitial: NSObject, SFInterstitialDelegate {
-    private var manager: SFInterstitialManager
+    private let result: FlutterResult
+    private let methodChannel: FlutterMethodChannel
+    private let manager: SFInterstitialManager
 
-    override init() {
+    init(args: [String: Any], result: @escaping FlutterResult, messenger: FlutterBinaryMessenger) {
+        self.result = result
+        methodChannel = FlutterMethodChannel(
+            name: FlutterMediatomChannel.interstitialAd.rawValue,
+            binaryMessenger: messenger)
         manager = SFInterstitialManager()
         super.init()
         manager.delegate = self
-        manager.mediaId = "548c7d964c146f53"
+        manager.mediaId = args["slotId"] as! String
         manager.showAdController = FlutterMediatomUtil.getVC()
         manager.loadAdData()
     }
 
+    // Flutter 通信
+    private func postMessage(_ method: String, arguments: [String: Any]? = nil) {
+        methodChannel.invokeMethod(method, arguments: arguments)
+    }
+
     // 广告加载成功
     func interstitialAdDidLoad() {
+        postMessage("onAdLoadSuccess")
         manager.showInterstitialAd()
     }
 
     // 广告加载失败
     func interstitialAdDidFailed(_ error: Error) {
         print("插屏广告加载失败", error)
+        postMessage("onAdLoadFail")
+        result(false)
     }
 
     // 广告被点击
-    func interstitialAdDidClick() {}
+    func interstitialAdDidClick() {
+        postMessage("onAdDidClick")
+    }
 
     // 广告已关闭
-    func interstitialAdDidClose() {}
+    func interstitialAdDidClose() {
+        postMessage("onAdDidClose")
+        result(true)
+    }
 }

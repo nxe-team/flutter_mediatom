@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mediatom/widgets/mediatom_feed.dart';
+import 'package:flutter_mediatom_example/config/ad_config.dart';
 
 class FeedView extends StatefulWidget {
   const FeedView({super.key});
@@ -27,6 +28,7 @@ class _FeedViewState extends State<FeedView>
     return SizedBox(
       height: _height,
       child: MediatomFeed(
+        slotId: AdConfig.feedId,
         onAdRenderSuccess: _onAdRenderSuccess,
       ),
     );
