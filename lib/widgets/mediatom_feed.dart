@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mediatom/constants/platform_channel.dart';
 
 class MediatomFeed extends StatefulWidget {
   /// 广告渲染成功
@@ -48,12 +49,12 @@ class _MediatomFeedState extends State<MediatomFeed> {
       return const SizedBox.shrink();
     }
     return UiKitView(
-      viewType: 'flutter_mediatom_feed_ad',
+      viewType: PlatformChannel.feedAd.name,
       layoutDirection: TextDirection.ltr,
       creationParams: const {'slotId': ''},
       creationParamsCodec: const StandardMessageCodec(),
       onPlatformViewCreated: (int id) {
-        _methodChannel = MethodChannel('flutter_mediatom_feed_ad/$id');
+        _methodChannel = MethodChannel('${PlatformChannel.feedAd.name}/$id');
         _methodChannel!.setMethodCallHandler(_methodCallHandler);
       },
     );

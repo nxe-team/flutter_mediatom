@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mediatom/constants/platform_channel.dart';
 
 import 'flutter_mediatom_platform_interface.dart';
 
@@ -7,7 +8,7 @@ import 'flutter_mediatom_platform_interface.dart';
 class MethodChannelFlutterMediatom extends FlutterMediatomPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('flutter_mediatom');
+  final methodChannel = MethodChannel(PlatformChannel.plugin.name);
 
   @override
   Future<bool> initSDK() async {

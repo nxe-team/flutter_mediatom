@@ -36,7 +36,7 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
     }
 
     init(frame: CGRect, id: Int64, args: [String: Any], messenger: FlutterBinaryMessenger) {
-        methodChannel = FlutterMethodChannel(name: "\(FlutterMediatomChannel.feed_ad)/\(id)", binaryMessenger: messenger)
+        methodChannel = FlutterMethodChannel(name: "\(FlutterMediatomChannel.feed_ad.rawValue)/\(id)", binaryMessenger: messenger)
         container = UIView()
         manager = SFNativeManager()
         super.init()
@@ -60,15 +60,15 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
         let adData: SFFeedAdData = datas.first!
         // 模板广告
         if let ad = adData.adView {
-            print("信息流广告加载成功-模板 \(ad.bounds.height)")
             container.addSubview(ad)
             return
         }
         // 自渲染广告
-        print("信息流广告加载成功-自渲染")
         adData.isRenderImage = true
         let view = SFTemplateAdView(frame: CGRectMake(0, 0, UIScreen.main.bounds.size.width, 0), model: adData, style: SFTemplateStyleOptions.LIRT, lrMargin: 0, tbMargin: 0)!
-        print("自渲染广告高度 \(view.bounds.height)")
+        // 注册后才会渲染素材图片或视频
+        manager.registerAdView(forBindImage: view.adImageView, adData: adData, clickableViews: [container])
+        // 自渲染高度非0时已经呈现
         container.addSubview(view)
     }
 
@@ -79,9 +79,10 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
 
     // 广告渲染成功 自渲染也会回调
     func nativeAdDidRenderSuccess(withADView nativeAdView: UIView) {
-        print("信息流广告加载成功-模板 \(nativeAdView) \(container.subviews.first?.bounds.height)")
-        postMessage("onAdRenderSuccess", arguments: [
-            "height": container.subviews.first?.bounds.height
-        ])
+        if let adView = container.subviews.first {
+            postMessage("onAdRenderSuccess", arguments: [
+                "height": adView.bounds.height
+            ])
+        }
     }
 }
