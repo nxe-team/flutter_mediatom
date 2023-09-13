@@ -18,11 +18,11 @@ class FlutterMediatom {
   static Future<void> showSplashAd({
     required String slotId,
     String? logo,
-    Function? onAdLoadSuccess,
-    Function? onAdLoadFail,
-    Function? onAdRenderSuccess,
-    Function? onAdDidClick,
-    Function? onAdDidClose,
+    VoidCallback? onAdLoadSuccess,
+    VoidCallback? onAdLoadFail,
+    VoidCallback? onAdRenderSuccess,
+    VoidCallback? onAdDidClick,
+    VoidCallback? onAdDidClose,
   }) {
     MethodChannel(PlatformChannel.splashAd.name)
         .setMethodCallHandler((call) async {
@@ -54,10 +54,11 @@ class FlutterMediatom {
   static Future<void> showInterstitialAd({
     required String slotId,
     String? logo,
-    Function? onAdLoadSuccess,
-    Function? onAdLoadFail,
-    Function? onAdDidClick,
-    Function? onAdDidClose,
+    VoidCallback? onAdLoadSuccess,
+    VoidCallback? onAdLoadFail,
+    VoidCallback? onAdDidShow,
+    VoidCallback? onAdDidClick,
+    VoidCallback? onAdDidClose,
   }) {
     MethodChannel(PlatformChannel.interstitialAd.name)
         .setMethodCallHandler((call) async {
@@ -67,6 +68,9 @@ class FlutterMediatom {
           break;
         case 'onAdLoadFail':
           onAdLoadFail?.call();
+          break;
+        case 'onAdDidShow':
+          onAdDidShow?.call();
           break;
         case 'onAdDidClick':
           onAdDidClick?.call();

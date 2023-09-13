@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 开屏广告 Logo
 class FlutterMediaSplashLogo: UIView {
     private var imageName: String
 

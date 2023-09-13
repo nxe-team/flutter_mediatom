@@ -44,6 +44,11 @@ class FlutterMediatomInterstitial: NSObject, SFInterstitialDelegate {
         result(false)
     }
 
+    // 广告已展示
+    func interstitialAdDidVisible() {
+        postMessage("onAdDidShow")
+    }
+
     // 广告被点击
     func interstitialAdDidClick() {
         postMessage("onAdDidClick")

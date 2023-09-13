@@ -37,7 +37,7 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
 
     init(frame: CGRect, id: Int64, args: [String: Any], messenger: FlutterBinaryMessenger) {
         methodChannel = FlutterMethodChannel(name: "\(FlutterMediatomChannel.feedAd.rawValue)/\(id)", binaryMessenger: messenger)
-        container = UIView()
+        container = FlutterMediatomFeedAntiPenetration(frame: frame, methodChannel: methodChannel)
         manager = SFNativeManager()
         super.init()
         manager.delegate = self
@@ -57,7 +57,7 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
     // 广告加载成功
     // 加载完成时获取广告高度部分素材为 0
     func nativeAdDidLoad(_ datas: [SFFeedAdData]) {
-        postMessage("onAdDidLoad")
+        postMessage("onAdLoadSuccess")
         let adData: SFFeedAdData = datas.first!
         // 模板广告
         if let ad = adData.adView {
@@ -66,7 +66,12 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
         }
         // 自渲染广告
         adData.isRenderImage = true
-        let view = SFTemplateAdView(frame: CGRectMake(0, 0, UIScreen.main.bounds.size.width, 0), model: adData, style: SFTemplateStyleOptions.LIRT, lrMargin: 0, tbMargin: 0)!
+        let view = SFTemplateAdView(
+            frame: CGRectMake(0, 0, UIScreen.main.bounds.size.width, 0),
+            model: adData,
+            style: SFTemplateStyleOptions.LIRT,
+            lrMargin: 0,
+            tbMargin: 0)!
         // 注册后才会渲染素材图片或视频
         manager.registerAdView(forBindImage: view.adImageView, adData: adData, clickableViews: [container])
         // 自渲染高度非0时已经呈现
@@ -86,6 +91,11 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
                 "height": adView.bounds.height
             ])
         }
+    }
+
+    // 广告已展示
+    func nativeAdDidVisible() {
+        postMessage("onAdDidShow")
     }
 
     // 广告被点击
