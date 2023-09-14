@@ -21,6 +21,7 @@ class FlutterMediatom {
     VoidCallback? onAdLoadSuccess,
     VoidCallback? onAdLoadFail,
     VoidCallback? onAdRenderSuccess,
+    VoidCallback? onAdDidShow,
     VoidCallback? onAdDidClick,
     VoidCallback? onAdDidClose,
   }) {
@@ -35,6 +36,9 @@ class FlutterMediatom {
           break;
         case 'onAdRenderSuccess':
           onAdRenderSuccess?.call();
+          break;
+        case 'onAdDidShow':
+          onAdDidShow?.call();
           break;
         case 'onAdDidClick':
           onAdDidClick?.call();

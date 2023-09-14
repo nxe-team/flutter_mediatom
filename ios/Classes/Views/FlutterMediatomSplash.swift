@@ -55,6 +55,11 @@ class FlutterMediatomSplash: NSObject, SFSplashDelegate {
         postMessage("onAdRenderSuccess")
     }
 
+    // 广告成功展示
+    func splashAdDidVisible() {
+        postMessage("onAdDidShow")
+    }
+
     // 广告被点击
     func splashAdDidClicked(withUrlStr urlStr: String?) {
         postMessage("onAdDidClick")
