@@ -31,6 +31,17 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
+  # 穿山甲 SDK 及 Adapter
+  pod 'SFAdCsjAdapter'
+  # 百度 SDK 及 Adapter
+  pod 'SFAdBaiduAdapter'
+  # 优量汇 SDK 及 Adapter
+  pod 'SFAdGdtAdapter'
+  # Gromore SDK 及 Adapter
+  pod 'SFAdGromoreAdapter'
+  # 快手 SDK 及 Adapter
+  pod 'SFAdKsAdapter'
+  
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 

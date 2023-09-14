@@ -3,63 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		118588C042CB28C343EEFABF /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4B8C2862C236C354B77A3 /* Pods_Runner.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
-		17D7740B2AB0150800B6A5E7 /* BURelyFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D773D12AB0150700B6A5E7 /* BURelyFoundation.xcframework */; };
-		17D7740C2AB0150800B6A5E7 /* BUAdSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D773D22AB0150700B6A5E7 /* BUAdSDK.xcframework */; };
-		17D7740D2AB0150800B6A5E7 /* CSJAdSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 17D773D32AB0150700B6A5E7 /* CSJAdSDK.bundle */; };
-		17D7740E2AB0150800B6A5E7 /* SFAdCsjAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D773D42AB0150700B6A5E7 /* SFAdCsjAdapter.xcframework */; };
-		17D7740F2AB0150800B6A5E7 /* SFAdBaiduAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D773D62AB0150700B6A5E7 /* SFAdBaiduAdapter.xcframework */; };
-		17D774102AB0150800B6A5E7 /* baidumobadsdk.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 17D773D82AB0150700B6A5E7 /* baidumobadsdk.bundle */; };
-		17D774112AB0150800B6A5E7 /* BaiduMobAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D773D92AB0150700B6A5E7 /* BaiduMobAdSDK.framework */; };
-		17D774122AB0150800B6A5E7 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D773F62AB0150800B6A5E7 /* libGDTMobSDK.a */; };
-		17D774132AB0150800B6A5E7 /* SFAdGdtAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774012AB0150800B6A5E7 /* SFAdGdtAdapter.xcframework */; };
-		17D774142AB0150800B6A5E7 /* SFAdGromoreAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774032AB0150800B6A5E7 /* SFAdGromoreAdapter.xcframework */; };
-		17D774152AB0150800B6A5E7 /* ABUAdCsjAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774052AB0150800B6A5E7 /* ABUAdCsjAdapter.framework */; };
-		17D774162AB0150800B6A5E7 /* ABUAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774062AB0150800B6A5E7 /* ABUAdSDK.framework */; };
-		17D774182AB0150800B6A5E7 /* SFAdKsAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7740A2AB0150800B6A5E7 /* SFAdKsAdapter.xcframework */; };
-		17D774192AB0156800B6A5E7 /* KSAdSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774092AB0150800B6A5E7 /* KSAdSDK.xcframework */; };
-		17D7741A2AB0156800B6A5E7 /* KSAdSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774092AB0150800B6A5E7 /* KSAdSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		17D7741C2AB015E400B6A5E7 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7741B2AB015E400B6A5E7 /* libresolv.9.tbd */; };
-		17D7741E2AB015ED00B6A5E7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7741D2AB015ED00B6A5E7 /* libc++.tbd */; };
-		17D774202AB015F500B6A5E7 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7741F2AB015F500B6A5E7 /* libc++abi.tbd */; };
-		17D774222AB015FE00B6A5E7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774212AB015FE00B6A5E7 /* libz.tbd */; };
-		17D774242AB0160500B6A5E7 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774232AB0160500B6A5E7 /* libbz2.tbd */; };
-		17D774262AB0160E00B6A5E7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774252AB0160E00B6A5E7 /* libxml2.tbd */; };
-		17D774282AB0161600B6A5E7 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774272AB0161600B6A5E7 /* libiconv.tbd */; };
-		17D7742A2AB0161C00B6A5E7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774292AB0161C00B6A5E7 /* libsqlite3.tbd */; };
-		17D7742C2AB0162300B6A5E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7742B2AB0162300B6A5E7 /* StoreKit.framework */; };
-		17D7742E2AB0162A00B6A5E7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7742D2AB0162A00B6A5E7 /* MobileCoreServices.framework */; };
-		17D774302AB0163100B6A5E7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7742F2AB0163100B6A5E7 /* WebKit.framework */; };
-		17D774322AB0163900B6A5E7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774312AB0163900B6A5E7 /* MediaPlayer.framework */; };
-		17D774342AB0164000B6A5E7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774332AB0164000B6A5E7 /* CoreMedia.framework */; };
-		17D774362AB0164700B6A5E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774352AB0164700B6A5E7 /* AVFoundation.framework */; };
-		17D774382AB0164E00B6A5E7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774372AB0164E00B6A5E7 /* CoreLocation.framework */; };
-		17D7743A2AB016C500B6A5E7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774392AB016C500B6A5E7 /* CoreTelephony.framework */; };
-		17D7743C2AB016CF00B6A5E7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7743B2AB016CF00B6A5E7 /* SystemConfiguration.framework */; };
-		17D7743E2AB016D600B6A5E7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7743D2AB016D600B6A5E7 /* AdSupport.framework */; };
-		17D774402AB016E100B6A5E7 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7743F2AB016E000B6A5E7 /* CoreMotion.framework */; };
-		17D774422AB016E900B6A5E7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774412AB016E900B6A5E7 /* Security.framework */; };
-		17D774442AB016F200B6A5E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774432AB016F200B6A5E7 /* QuartzCore.framework */; };
-		17D774462AB0170400B6A5E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774452AB0170400B6A5E7 /* CoreGraphics.framework */; };
-		17D774482AB0170E00B6A5E7 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774472AB0170E00B6A5E7 /* SafariServices.framework */; };
-		17D7744A2AB0171500B6A5E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774492AB0171500B6A5E7 /* UIKit.framework */; };
-		17D7744C2AB0172000B6A5E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7744B2AB0172000B6A5E7 /* Foundation.framework */; };
-		17D7744E2AB0172800B6A5E7 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7744D2AB0172800B6A5E7 /* JavaScriptCore.framework */; };
-		17D774502AB0172F00B6A5E7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D7744F2AB0172F00B6A5E7 /* MapKit.framework */; };
-		17D774522AB0173500B6A5E7 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774512AB0173500B6A5E7 /* AssetsLibrary.framework */; };
-		17D774542AB0173C00B6A5E7 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774532AB0173C00B6A5E7 /* AppTrackingTransparency.framework */; };
-		17D774562AB0174700B6A5E7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774552AB0174700B6A5E7 /* MessageUI.framework */; };
-		17D774582AB0174E00B6A5E7 /* DeviceCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D774572AB0174E00B6A5E7 /* DeviceCheck.framework */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		D8D496CBC3FACD61F7011987 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4B8C2862C236C354B77A3 /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,7 +23,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				17D7741A2AB0156800B6A5E7 /* KSAdSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,56 +33,6 @@
 		0E641D8742EB034791A99523 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
-		17D773D12AB0150700B6A5E7 /* BURelyFoundation.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = BURelyFoundation.xcframework; sourceTree = "<group>"; };
-		17D773D22AB0150700B6A5E7 /* BUAdSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = BUAdSDK.xcframework; sourceTree = "<group>"; };
-		17D773D32AB0150700B6A5E7 /* CSJAdSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CSJAdSDK.bundle; sourceTree = "<group>"; };
-		17D773D42AB0150700B6A5E7 /* SFAdCsjAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SFAdCsjAdapter.xcframework; sourceTree = "<group>"; };
-		17D773D62AB0150700B6A5E7 /* SFAdBaiduAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SFAdBaiduAdapter.xcframework; sourceTree = "<group>"; };
-		17D773D82AB0150700B6A5E7 /* baidumobadsdk.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = baidumobadsdk.bundle; sourceTree = "<group>"; };
-		17D773D92AB0150700B6A5E7 /* BaiduMobAdSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMobAdSDK.framework; sourceTree = "<group>"; };
-		17D773DC2AB0150700B6A5E7 /* GDTRewardVideoAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTRewardVideoAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
-		17D773DD2AB0150700B6A5E7 /* GDTNativeExpressAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAdView.h; sourceTree = "<group>"; };
-		17D773DE2AB0150700B6A5E7 /* GDTSplashAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSplashAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
-		17D773DF2AB0150700B6A5E7 /* GDTAdParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTAdParams.h; sourceTree = "<group>"; };
-		17D773E02AB0150700B6A5E7 /* GDTUnifiedInterstitialAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedInterstitialAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
-		17D773E12AB0150700B6A5E7 /* GDTUnifiedBannerAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedBannerAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
-		17D773E22AB0150700B6A5E7 /* GDTAdTestSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTAdTestSetting.h; sourceTree = "<group>"; };
-		17D773E32AB0150700B6A5E7 /* GDTUnifiedBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedBannerView.h; sourceTree = "<group>"; };
-		17D773E42AB0150700B6A5E7 /* GDTServerSideVerificationOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTServerSideVerificationOptions.h; sourceTree = "<group>"; };
-		17D773E52AB0150700B6A5E7 /* GDTSDKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSDKConfig.h; sourceTree = "<group>"; };
-		17D773E62AB0150800B6A5E7 /* GDTBaseAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTBaseAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
-		17D773E72AB0150800B6A5E7 /* GDTRewardVideoAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTRewardVideoAd.h; sourceTree = "<group>"; };
-		17D773E82AB0150800B6A5E7 /* GDTUnifiedNativeAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedNativeAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
-		17D773E92AB0150800B6A5E7 /* GDTSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSplashAd.h; sourceTree = "<group>"; };
-		17D773EA2AB0150800B6A5E7 /* GDTNativeExpressAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAd.h; sourceTree = "<group>"; };
-		17D773EB2AB0150800B6A5E7 /* GDTLogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTLogoView.h; sourceTree = "<group>"; };
-		17D773EC2AB0150800B6A5E7 /* GDTUnifiedInterstitialAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedInterstitialAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
-		17D773ED2AB0150800B6A5E7 /* GDTUnifiedBannerAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedBannerAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
-		17D773EE2AB0150800B6A5E7 /* GDTMediaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMediaView.h; sourceTree = "<group>"; };
-		17D773EF2AB0150800B6A5E7 /* GDTUnifiedNativeAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedNativeAdView.h; sourceTree = "<group>"; };
-		17D773F02AB0150800B6A5E7 /* GDTUnifiedNativeAdDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedNativeAdDataObject.h; sourceTree = "<group>"; };
-		17D773F12AB0150800B6A5E7 /* GDTNativeExpressAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
-		17D773F22AB0150800B6A5E7 /* GDTSDKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSDKDefines.h; sourceTree = "<group>"; };
-		17D773F32AB0150800B6A5E7 /* GDTVideoAdReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTVideoAdReporter.h; sourceTree = "<group>"; };
-		17D773F42AB0150800B6A5E7 /* GDTPrivacyConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTPrivacyConfiguration.h; sourceTree = "<group>"; };
-		17D773F52AB0150800B6A5E7 /* GDTUnifiedInterstitialAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedInterstitialAd.h; sourceTree = "<group>"; };
-		17D773F62AB0150800B6A5E7 /* libGDTMobSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGDTMobSDK.a; sourceTree = "<group>"; };
-		17D773F72AB0150800B6A5E7 /* GDTNativeExpressAdViewAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAdViewAdapterProtocol.h; sourceTree = "<group>"; };
-		17D773F82AB0150800B6A5E7 /* GDTLoadAdParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTLoadAdParams.h; sourceTree = "<group>"; };
-		17D773F92AB0150800B6A5E7 /* GDTUnifiedNativeAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedNativeAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
-		17D773FA2AB0150800B6A5E7 /* GDTRewardVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTRewardVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
-		17D773FB2AB0150800B6A5E7 /* GDTSplashAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSplashAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
-		17D773FC2AB0150800B6A5E7 /* GDTServerBiddingResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTServerBiddingResult.h; sourceTree = "<group>"; };
-		17D773FD2AB0150800B6A5E7 /* GDTUnifiedNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTUnifiedNativeAd.h; sourceTree = "<group>"; };
-		17D773FE2AB0150800B6A5E7 /* GDTVideoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTVideoConfig.h; sourceTree = "<group>"; };
-		17D773FF2AB0150800B6A5E7 /* GDTNativeExpressAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
-		17D774002AB0150800B6A5E7 /* GDTAdProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTAdProtocol.h; sourceTree = "<group>"; };
-		17D774012AB0150800B6A5E7 /* SFAdGdtAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SFAdGdtAdapter.xcframework; sourceTree = "<group>"; };
-		17D774032AB0150800B6A5E7 /* SFAdGromoreAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SFAdGromoreAdapter.xcframework; sourceTree = "<group>"; };
-		17D774052AB0150800B6A5E7 /* ABUAdCsjAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ABUAdCsjAdapter.framework; sourceTree = "<group>"; };
-		17D774062AB0150800B6A5E7 /* ABUAdSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ABUAdSDK.framework; sourceTree = "<group>"; };
-		17D774092AB0150800B6A5E7 /* KSAdSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = KSAdSDK.xcframework; sourceTree = "<group>"; };
-		17D7740A2AB0150800B6A5E7 /* SFAdKsAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SFAdKsAdapter.xcframework; sourceTree = "<group>"; };
 		17D7741B2AB015E400B6A5E7 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 		17D7741D2AB015ED00B6A5E7 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		17D7741F2AB015F500B6A5E7 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
@@ -182,193 +85,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17D774582AB0174E00B6A5E7 /* DeviceCheck.framework in Frameworks */,
-				17D774562AB0174700B6A5E7 /* MessageUI.framework in Frameworks */,
-				17D774542AB0173C00B6A5E7 /* AppTrackingTransparency.framework in Frameworks */,
-				17D774522AB0173500B6A5E7 /* AssetsLibrary.framework in Frameworks */,
-				17D774502AB0172F00B6A5E7 /* MapKit.framework in Frameworks */,
-				17D7744E2AB0172800B6A5E7 /* JavaScriptCore.framework in Frameworks */,
-				17D7744C2AB0172000B6A5E7 /* Foundation.framework in Frameworks */,
-				17D7744A2AB0171500B6A5E7 /* UIKit.framework in Frameworks */,
-				17D774482AB0170E00B6A5E7 /* SafariServices.framework in Frameworks */,
-				17D774462AB0170400B6A5E7 /* CoreGraphics.framework in Frameworks */,
-				17D774442AB016F200B6A5E7 /* QuartzCore.framework in Frameworks */,
-				17D774422AB016E900B6A5E7 /* Security.framework in Frameworks */,
-				17D774402AB016E100B6A5E7 /* CoreMotion.framework in Frameworks */,
-				17D7743E2AB016D600B6A5E7 /* AdSupport.framework in Frameworks */,
-				17D7743C2AB016CF00B6A5E7 /* SystemConfiguration.framework in Frameworks */,
-				17D7743A2AB016C500B6A5E7 /* CoreTelephony.framework in Frameworks */,
-				17D774382AB0164E00B6A5E7 /* CoreLocation.framework in Frameworks */,
-				17D774362AB0164700B6A5E7 /* AVFoundation.framework in Frameworks */,
-				17D774342AB0164000B6A5E7 /* CoreMedia.framework in Frameworks */,
-				17D774322AB0163900B6A5E7 /* MediaPlayer.framework in Frameworks */,
-				17D774302AB0163100B6A5E7 /* WebKit.framework in Frameworks */,
-				17D7742E2AB0162A00B6A5E7 /* MobileCoreServices.framework in Frameworks */,
-				17D7742C2AB0162300B6A5E7 /* StoreKit.framework in Frameworks */,
-				17D7742A2AB0161C00B6A5E7 /* libsqlite3.tbd in Frameworks */,
-				17D774282AB0161600B6A5E7 /* libiconv.tbd in Frameworks */,
-				17D774262AB0160E00B6A5E7 /* libxml2.tbd in Frameworks */,
-				17D774242AB0160500B6A5E7 /* libbz2.tbd in Frameworks */,
-				17D774222AB015FE00B6A5E7 /* libz.tbd in Frameworks */,
-				17D774202AB015F500B6A5E7 /* libc++abi.tbd in Frameworks */,
-				17D7741E2AB015ED00B6A5E7 /* libc++.tbd in Frameworks */,
-				17D7741C2AB015E400B6A5E7 /* libresolv.9.tbd in Frameworks */,
-				17D774192AB0156800B6A5E7 /* KSAdSDK.xcframework in Frameworks */,
-				17D774122AB0150800B6A5E7 /* libGDTMobSDK.a in Frameworks */,
-				17D7740E2AB0150800B6A5E7 /* SFAdCsjAdapter.xcframework in Frameworks */,
-				17D774112AB0150800B6A5E7 /* BaiduMobAdSDK.framework in Frameworks */,
-				17D774142AB0150800B6A5E7 /* SFAdGromoreAdapter.xcframework in Frameworks */,
-				17D774182AB0150800B6A5E7 /* SFAdKsAdapter.xcframework in Frameworks */,
-				17D7740C2AB0150800B6A5E7 /* BUAdSDK.xcframework in Frameworks */,
-				17D7740F2AB0150800B6A5E7 /* SFAdBaiduAdapter.xcframework in Frameworks */,
-				118588C042CB28C343EEFABF /* Pods_Runner.framework in Frameworks */,
-				17D774162AB0150800B6A5E7 /* ABUAdSDK.framework in Frameworks */,
-				17D774152AB0150800B6A5E7 /* ABUAdCsjAdapter.framework in Frameworks */,
-				17D7740B2AB0150800B6A5E7 /* BURelyFoundation.xcframework in Frameworks */,
-				17D774132AB0150800B6A5E7 /* SFAdGdtAdapter.xcframework in Frameworks */,
+				D8D496CBC3FACD61F7011987 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		17D773CE2AB0150700B6A5E7 /* AdSDK */ = {
-			isa = PBXGroup;
-			children = (
-				17D773CF2AB0150700B6A5E7 /* AdCsjAdapter */,
-				17D773D52AB0150700B6A5E7 /* AdBaiduAdapter */,
-				17D773DA2AB0150700B6A5E7 /* AdGdtAdapter */,
-				17D774022AB0150800B6A5E7 /* AdGromoreAdapter */,
-				17D774072AB0150800B6A5E7 /* AdKsAdapter */,
-			);
-			path = AdSDK;
-			sourceTree = "<group>";
-		};
-		17D773CF2AB0150700B6A5E7 /* AdCsjAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				17D773D02AB0150700B6A5E7 /* AdCsj */,
-				17D773D42AB0150700B6A5E7 /* SFAdCsjAdapter.xcframework */,
-			);
-			path = AdCsjAdapter;
-			sourceTree = "<group>";
-		};
-		17D773D02AB0150700B6A5E7 /* AdCsj */ = {
-			isa = PBXGroup;
-			children = (
-				17D773D12AB0150700B6A5E7 /* BURelyFoundation.xcframework */,
-				17D773D22AB0150700B6A5E7 /* BUAdSDK.xcframework */,
-				17D773D32AB0150700B6A5E7 /* CSJAdSDK.bundle */,
-			);
-			path = AdCsj;
-			sourceTree = "<group>";
-		};
-		17D773D52AB0150700B6A5E7 /* AdBaiduAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				17D773D62AB0150700B6A5E7 /* SFAdBaiduAdapter.xcframework */,
-				17D773D72AB0150700B6A5E7 /* AdBaidu */,
-			);
-			path = AdBaiduAdapter;
-			sourceTree = "<group>";
-		};
-		17D773D72AB0150700B6A5E7 /* AdBaidu */ = {
-			isa = PBXGroup;
-			children = (
-				17D773D82AB0150700B6A5E7 /* baidumobadsdk.bundle */,
-				17D773D92AB0150700B6A5E7 /* BaiduMobAdSDK.framework */,
-			);
-			path = AdBaidu;
-			sourceTree = "<group>";
-		};
-		17D773DA2AB0150700B6A5E7 /* AdGdtAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				17D773DB2AB0150700B6A5E7 /* AdGdt */,
-				17D774012AB0150800B6A5E7 /* SFAdGdtAdapter.xcframework */,
-			);
-			path = AdGdtAdapter;
-			sourceTree = "<group>";
-		};
-		17D773DB2AB0150700B6A5E7 /* AdGdt */ = {
-			isa = PBXGroup;
-			children = (
-				17D773DC2AB0150700B6A5E7 /* GDTRewardVideoAdNetworkAdapterProtocol.h */,
-				17D773DD2AB0150700B6A5E7 /* GDTNativeExpressAdView.h */,
-				17D773DE2AB0150700B6A5E7 /* GDTSplashAdNetworkConnectorProtocol.h */,
-				17D773DF2AB0150700B6A5E7 /* GDTAdParams.h */,
-				17D773E02AB0150700B6A5E7 /* GDTUnifiedInterstitialAdNetworkAdapterProtocol.h */,
-				17D773E12AB0150700B6A5E7 /* GDTUnifiedBannerAdNetworkAdapterProtocol.h */,
-				17D773E22AB0150700B6A5E7 /* GDTAdTestSetting.h */,
-				17D773E32AB0150700B6A5E7 /* GDTUnifiedBannerView.h */,
-				17D773E42AB0150700B6A5E7 /* GDTServerSideVerificationOptions.h */,
-				17D773E52AB0150700B6A5E7 /* GDTSDKConfig.h */,
-				17D773E62AB0150800B6A5E7 /* GDTBaseAdNetworkAdapterProtocol.h */,
-				17D773E72AB0150800B6A5E7 /* GDTRewardVideoAd.h */,
-				17D773E82AB0150800B6A5E7 /* GDTUnifiedNativeAdNetworkConnectorProtocol.h */,
-				17D773E92AB0150800B6A5E7 /* GDTSplashAd.h */,
-				17D773EA2AB0150800B6A5E7 /* GDTNativeExpressAd.h */,
-				17D773EB2AB0150800B6A5E7 /* GDTLogoView.h */,
-				17D773EC2AB0150800B6A5E7 /* GDTUnifiedInterstitialAdNetworkConnectorProtocol.h */,
-				17D773ED2AB0150800B6A5E7 /* GDTUnifiedBannerAdNetworkConnectorProtocol.h */,
-				17D773EE2AB0150800B6A5E7 /* GDTMediaView.h */,
-				17D773EF2AB0150800B6A5E7 /* GDTUnifiedNativeAdView.h */,
-				17D773F02AB0150800B6A5E7 /* GDTUnifiedNativeAdDataObject.h */,
-				17D773F12AB0150800B6A5E7 /* GDTNativeExpressAdNetworkAdapterProtocol.h */,
-				17D773F22AB0150800B6A5E7 /* GDTSDKDefines.h */,
-				17D773F32AB0150800B6A5E7 /* GDTVideoAdReporter.h */,
-				17D773F42AB0150800B6A5E7 /* GDTPrivacyConfiguration.h */,
-				17D773F52AB0150800B6A5E7 /* GDTUnifiedInterstitialAd.h */,
-				17D773F62AB0150800B6A5E7 /* libGDTMobSDK.a */,
-				17D773F72AB0150800B6A5E7 /* GDTNativeExpressAdViewAdapterProtocol.h */,
-				17D773F82AB0150800B6A5E7 /* GDTLoadAdParams.h */,
-				17D773F92AB0150800B6A5E7 /* GDTUnifiedNativeAdNetworkAdapterProtocol.h */,
-				17D773FA2AB0150800B6A5E7 /* GDTRewardVideoAdNetworkConnectorProtocol.h */,
-				17D773FB2AB0150800B6A5E7 /* GDTSplashAdNetworkAdapterProtocol.h */,
-				17D773FC2AB0150800B6A5E7 /* GDTServerBiddingResult.h */,
-				17D773FD2AB0150800B6A5E7 /* GDTUnifiedNativeAd.h */,
-				17D773FE2AB0150800B6A5E7 /* GDTVideoConfig.h */,
-				17D773FF2AB0150800B6A5E7 /* GDTNativeExpressAdNetworkConnectorProtocol.h */,
-				17D774002AB0150800B6A5E7 /* GDTAdProtocol.h */,
-			);
-			path = AdGdt;
-			sourceTree = "<group>";
-		};
-		17D774022AB0150800B6A5E7 /* AdGromoreAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				17D774032AB0150800B6A5E7 /* SFAdGromoreAdapter.xcframework */,
-				17D774042AB0150800B6A5E7 /* AdGromore */,
-			);
-			path = AdGromoreAdapter;
-			sourceTree = "<group>";
-		};
-		17D774042AB0150800B6A5E7 /* AdGromore */ = {
-			isa = PBXGroup;
-			children = (
-				17D774052AB0150800B6A5E7 /* ABUAdCsjAdapter.framework */,
-				17D774062AB0150800B6A5E7 /* ABUAdSDK.framework */,
-			);
-			path = AdGromore;
-			sourceTree = "<group>";
-		};
-		17D774072AB0150800B6A5E7 /* AdKsAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				17D774082AB0150800B6A5E7 /* AdKs */,
-				17D7740A2AB0150800B6A5E7 /* SFAdKsAdapter.xcframework */,
-			);
-			path = AdKsAdapter;
-			sourceTree = "<group>";
-		};
-		17D774082AB0150800B6A5E7 /* AdKs */ = {
-			isa = PBXGroup;
-			children = (
-				17D774092AB0150800B6A5E7 /* KSAdSDK.xcframework */,
-			);
-			path = AdKs;
-			sourceTree = "<group>";
-		};
 		4638B2F5F313500AC1DE271F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,7 +155,6 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
-				17D773CE2AB0150700B6A5E7 /* AdSDK */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -479,6 +201,7 @@
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				551603F68A53174294B29195 /* [CP] Embed Pods Frameworks */,
+				06CD7F7C0E24562542CE890A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -527,11 +250,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17D774102AB0150800B6A5E7 /* baidumobadsdk.bundle in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
-				17D7740D2AB0150800B6A5E7 /* CSJAdSDK.bundle in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +280,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		06CD7F7C0E24562542CE890A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
