@@ -23,7 +23,11 @@ abstract class FlutterMediatomPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
+  Future<bool> initSDK() {
     throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<void> showSplashAd() {
+    throw UnimplementedError('showSplashAd() has not been implemented.');
   }
 }

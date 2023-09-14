@@ -10,8 +10,13 @@ class MethodChannelFlutterMediatom extends FlutterMediatomPlatform {
   final methodChannel = const MethodChannel('flutter_mediatom');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Future<bool> initSDK() async {
+    final result = await methodChannel.invokeMethod<bool>('initSDK');
+    return result ?? false;
+  }
+
+  @override
+  Future<void> showSplashAd() async {
+    await methodChannel.invokeMethod('showSplashAd');
   }
 }
