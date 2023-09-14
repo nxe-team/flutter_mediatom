@@ -43,10 +43,14 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
         manager.delegate = self
         manager.mediaId = args["slotId"] as! String
         manager.adCount = 1
-        manager.size = CGSizeMake(UIScreen.main.bounds.size.width, 0)
-        manager.showAdController = FlutterMediatomUtil.getVC()
+        manager.size = CGSizeMake(FlutterMediatomUtil.screenWidth, 0)
+        manager.showAdController = FlutterMediatomUtil.VC
         manager.theme = SFTemplateExpressNativeNormalTheme
         manager.loadAdData()
+    }
+
+    deinit {
+        manager.deallocAllFeedProperty()
     }
 
     // Flutter 通信
@@ -67,15 +71,24 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
         // 自渲染广告
         adData.isRenderImage = true
         let view = SFTemplateAdView(
-            frame: CGRectMake(0, 0, UIScreen.main.bounds.size.width, 0),
+            frame: CGRectMake(0, 0, FlutterMediatomUtil.screenWidth, 0),
             model: adData,
             style: SFTemplateStyleOptions.LIRT,
-            lrMargin: 0,
-            tbMargin: 0)!
+            lrMargin: 15,
+            tbMargin: 10)!
         // 注册后才会渲染素材图片或视频
         manager.registerAdView(forBindImage: view.adImageView, adData: adData, clickableViews: [container])
         // 自渲染高度非0时已经呈现
         container.addSubview(view)
+        // 关闭按钮
+        let closeButton = FlutterMediatomCloseButton()
+        closeButton.addTarget(self, action: #selector(onTouchUpCloseButton), for: .touchUpInside)
+        container.addSubview(closeButton)
+    }
+
+    // 点击自渲染广告关闭按钮
+    @objc func onTouchUpCloseButton() {
+        postMessage("onAdDidClose")
     }
 
     // 广告加载失败

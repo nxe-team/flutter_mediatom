@@ -12,6 +12,7 @@ class FeedView extends StatefulWidget {
 class _FeedViewState extends State<FeedView>
     with AutomaticKeepAliveClientMixin {
   double _height = 0.1;
+  bool _isRemove = false;
 
   void _onAdRenderSuccess(double height) {
     print('信息流渲染成功 $height');
@@ -22,14 +23,22 @@ class _FeedViewState extends State<FeedView>
     }
   }
 
+  void _onAdDidClose() {
+    setState(() {
+      _isRemove = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    if (_isRemove) return const SizedBox.shrink();
     return SizedBox(
       height: _height,
       child: MediatomFeed(
         slotId: AdConfig.feedId,
         onAdRenderSuccess: _onAdRenderSuccess,
+        onAdDidClose: _onAdDidClose,
       ),
     );
   }

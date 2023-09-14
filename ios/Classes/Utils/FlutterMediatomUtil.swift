@@ -8,8 +8,11 @@
 import Foundation
 
 class FlutterMediatomUtil {
+    // 屏幕宽
+    static var screenWidth: CGFloat { UIScreen.main.bounds.size.width }
+
     // 获取 UIViewController
-    static func getVC() -> UIViewController {
+    static var VC: UIViewController {
         let viewController = UIApplication.shared.windows.filter { w -> Bool in
             w.isHidden == false
         }.first?.rootViewController

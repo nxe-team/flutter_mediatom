@@ -22,7 +22,7 @@ class FlutterMediatomInterstitial: NSObject, SFInterstitialDelegate {
         super.init()
         manager.delegate = self
         manager.mediaId = args["slotId"] as! String
-        manager.showAdController = FlutterMediatomUtil.getVC()
+        manager.showAdController = FlutterMediatomUtil.VC
         manager.loadAdData()
     }
 
