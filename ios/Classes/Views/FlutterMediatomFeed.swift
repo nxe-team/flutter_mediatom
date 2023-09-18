@@ -44,9 +44,8 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
         manager.mediaId = args["slotId"] as! String
         manager.adCount = 1
         manager.size = CGSizeMake(FlutterMediatomUtil.screenWidth, 0)
-        // 不要使用 FlutterViewController
-        // 广告关闭弹窗未处理的触摸事件会触发Flutter触摸事件
-        manager.showAdController = nil
+        // 广告关闭弹窗未找到响应者的触摸事件会落到 FlutterViewController
+        manager.showAdController = FlutterMediatomUtil.VC
         manager.theme = SFTemplateExpressNativeNormalTheme
         manager.loadAdData()
     }
