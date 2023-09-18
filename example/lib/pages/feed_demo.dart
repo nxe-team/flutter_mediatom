@@ -11,18 +11,21 @@ class FeedDemo extends StatefulWidget {
 
 class _FeedDemoState extends State<FeedDemo> {
   Widget _buildFeedAd(BuildContext context, int index) {
-    if (index % 5 == 0) {
+    if (index != 0 && index % 5 == 0) {
       return const FeedView();
     }
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: const Color(0xffcccccc),
-          width: 1,
+    return InkWell(
+      onTap: () => print('onTapItem'),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: const Color(0xffcccccc),
+            width: 1,
+          ),
         ),
+        height: 200,
+        child: Text(index.toString()),
       ),
-      height: 200,
-      child: Text(index.toString()),
     );
   }
 

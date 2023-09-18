@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mediatom/flutter_mediatom.dart';
 import 'package:flutter_mediatom_example/config/ad_config.dart';
 import 'package:flutter_mediatom_example/pages/feed_demo.dart';
+import 'package:flutter_mediatom_example/pages/splash_page.dart';
 
 /// 首页
 class HomePage extends StatefulWidget {
@@ -19,10 +20,8 @@ class _HomePageState extends State<HomePage> {
 
   /// 显示开屏广告
   void _showSplashAd() {
-    FlutterMediatom.showSplashAd(
-      slotId: AdConfig.splashId,
-      logo: 'splash_logo',
-    );
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const SplashPage()));
   }
 
   /// 显示插屏广告
