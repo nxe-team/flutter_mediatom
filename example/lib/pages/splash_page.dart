@@ -19,6 +19,8 @@ class _SplashPageState extends State<SplashPage> {
       logo: 'splash_logo',
       onAdDidShow: _onAdDidShow,
       onAdLoadFail: _onAdLoadFail,
+      // 兜底无回调
+      onAdFallback: _onAdLoadFail,
     );
   }
 

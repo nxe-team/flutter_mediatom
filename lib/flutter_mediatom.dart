@@ -24,6 +24,7 @@ class FlutterMediatom {
     VoidCallback? onAdDidShow,
     VoidCallback? onAdDidClick,
     VoidCallback? onAdDidClose,
+    VoidCallback? onAdFallback,
   }) {
     MethodChannel(PlatformChannel.splashAd.name)
         .setMethodCallHandler((call) async {
@@ -46,6 +47,9 @@ class FlutterMediatom {
         case 'onAdDidClose':
           onAdDidClose?.call();
           break;
+        case 'onAdFallback':
+          onAdFallback?.call();
+          break;
       }
     });
     return methodChannel.invokeMethod('showSplashAd', {
@@ -63,6 +67,7 @@ class FlutterMediatom {
     VoidCallback? onAdDidShow,
     VoidCallback? onAdDidClick,
     VoidCallback? onAdDidClose,
+    VoidCallback? onAdFallback,
   }) {
     MethodChannel(PlatformChannel.interstitialAd.name)
         .setMethodCallHandler((call) async {
@@ -81,6 +86,9 @@ class FlutterMediatom {
           break;
         case 'onAdDidClose':
           onAdDidClose?.call();
+          break;
+        case 'onAdFallback':
+          onAdFallback?.call();
           break;
       }
     });

@@ -8,21 +8,16 @@
 import Foundation
 import MSaas
 
-class FlutterMediatomSplash: NSObject, SFSplashDelegate {
-    // 结束 Flutter 调用
-    private let result: FlutterResult
-    // Flutter 通信
-    private let methodChannel: FlutterMethodChannel
+class FlutterMediatomSplash: FlutterMediatomBase, SFSplashDelegate {
     // 广告管理
     private let manager: SFSplashManager
 
     init(args: [String: Any], result: @escaping FlutterResult, messenger: FlutterBinaryMessenger) {
-        self.result = result
-        methodChannel = FlutterMethodChannel(
+        manager = SFSplashManager()
+        let methodChannel = FlutterMethodChannel(
             name: FlutterMediatomChannel.splashAd.rawValue,
             binaryMessenger: messenger)
-        manager = SFSplashManager()
-        super.init()
+        super.init(result: result, methodChannel: methodChannel)
         manager.delegate = self
         manager.mediaId = args["slotId"] as! String
         // 设置底部 logo
@@ -30,24 +25,38 @@ class FlutterMediatomSplash: NSObject, SFSplashDelegate {
             manager.bottomView = FlutterMediaSplashLogo(name: logo)
         }
         manager.loadAdData()
+
+        // 6s后未触发展示则自动关闭
+        fallbackTimer = FlutterMediatomTimer.delay(6) {
+            self.postMessage("onAdFallback")
+            self.safeResult(false)
+        }
     }
 
-    // Flutter 通信
-    private func postMessage(_ method: String, arguments: [String: Any]? = nil) {
-        methodChannel.invokeMethod(method, arguments: arguments)
+    deinit {
+        FlutterMediatomTimer.cancel(fallbackTimer)
     }
 
     // 广告加载成功
     func splashAdDidLoad() {
+        // 触发时已经结束 -> 不再展示
+        if isFulfilled { return }
         postMessage("onAdLoadSuccess")
         manager.showSplashAd(with: UIApplication.shared.keyWindow!)
+
+        FlutterMediatomTimer.cancel(fallbackTimer)
+        // 6s后未关闭则自动关闭
+        fallbackTimer = FlutterMediatomTimer.delay(6) {
+            self.postMessage("onAdFallback")
+            self.safeResult(true)
+        }
     }
 
     // 广告加载失败
     func splashAdDidFailed(_ error: Error) {
         print("开屏广告加载失败", error)
         postMessage("onAdLoadFail")
-        result(false)
+        safeResult(false)
     }
 
     // 广告渲染成功
@@ -68,6 +77,6 @@ class FlutterMediatomSplash: NSObject, SFSplashDelegate {
     // 广告展示完成
     func splashAdDidShowFinish() {
         postMessage("onAdDidClose")
-        result(true)
+        safeResult(true)
     }
 }
