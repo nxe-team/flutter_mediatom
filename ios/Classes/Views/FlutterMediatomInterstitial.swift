@@ -11,8 +11,11 @@ import MSaas
 class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
     // 广告管理
     private let manager: SFInterstitialManager
+    // 超时时间
+    private let timeout: Double
 
     init(args: [String: Any], result: @escaping FlutterResult, messenger: FlutterBinaryMessenger) {
+        timeout = Double(args["timeout"] as? Int ?? 6)
         manager = SFInterstitialManager()
         let methodChannel = FlutterMethodChannel(
             name: FlutterMediatomChannel.interstitialAd.rawValue,
@@ -20,11 +23,12 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
         super.init(result: result, methodChannel: methodChannel)
         manager.delegate = self
         manager.mediaId = args["slotId"] as! String
+        manager.timeout = timeout
         manager.showAdController = FlutterMediatomUtil.VC
         manager.loadAdData()
 
-        // 6s后未触发展示则自动关闭
-        fallbackTimer = FlutterMediatomTimer.delay(6) {
+        // 超时后追加1s仍未触发加载成功则自动关闭
+        fallbackTimer = FlutterMediatomTimer.delay(timeout + 1) {
             self.postMessage("onAdFallback")
             self.safeResult(false)
         }
@@ -36,6 +40,8 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
         if isFulfilled { return }
         postMessage("onAdLoadSuccess")
         manager.showInterstitialAd()
+        // 取消超时未回调计时
+        FlutterMediatomTimer.cancel(fallbackTimer)
     }
 
     // 广告加载失败

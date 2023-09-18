@@ -18,6 +18,7 @@ class FlutterMediatom {
   static Future<void> showSplashAd({
     required String slotId,
     String? logo,
+    int? timeout,
     VoidCallback? onAdLoadSuccess,
     VoidCallback? onAdLoadFail,
     VoidCallback? onAdRenderSuccess,
@@ -55,12 +56,14 @@ class FlutterMediatom {
     return methodChannel.invokeMethod('showSplashAd', {
       'slotId': slotId,
       'logo': logo,
+      'timeout': timeout,
     });
   }
 
   /// 显示开屏广告
   static Future<void> showInterstitialAd({
     required String slotId,
+    int? timeout,
     String? logo,
     VoidCallback? onAdLoadSuccess,
     VoidCallback? onAdLoadFail,
@@ -94,6 +97,7 @@ class FlutterMediatom {
     });
     return methodChannel.invokeMethod('showInterstitialAd', {
       'slotId': slotId,
+      'timeout': timeout,
     });
   }
 }

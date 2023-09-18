@@ -12,7 +12,8 @@ class FlutterMediatomBase: NSObject {
     private let result: FlutterResult
     // Flutter 通信
     private let methodChannel: FlutterMethodChannel
-    // 兜底关闭计时器 无加载成功/无关闭回调
+    // 兜底关闭计时器
+    // 避免无加载成功回调时Flutter一直等待
     var fallbackTimer: GCDTask?
     // 已经返回结果给 Flutter，阻止多次调用 result
     var isFulfilled: Bool = false
