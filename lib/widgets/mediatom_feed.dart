@@ -27,6 +27,9 @@ class MediatomFeed extends StatefulWidget {
   /// 广告已关闭
   final VoidCallback? onAdDidClose;
 
+  /// 广告被终止
+  final VoidCallback? onAdTerminate;
+
   const MediatomFeed({
     super.key,
     required this.slotId,
@@ -36,6 +39,7 @@ class MediatomFeed extends StatefulWidget {
     this.onAdDidShow,
     this.onAdDidClick,
     this.onAdDidClose,
+    this.onAdTerminate,
   });
 
   @override
@@ -66,6 +70,9 @@ class _MediatomFeedState extends State<MediatomFeed> {
         break;
       case 'onAdDidClose':
         widget.onAdDidClose?.call();
+        break;
+      case 'onAdTerminate':
+        widget.onAdTerminate?.call();
         break;
       default:
         throw UnsupportedError("Unsupported method");

@@ -39,6 +39,7 @@ class _FeedViewState extends State<FeedView>
         slotId: AdConfig.feedId,
         onAdRenderSuccess: _onAdRenderSuccess,
         onAdDidClose: _onAdDidClose,
+        onAdTerminate: _onAdDidClose,
       ),
     );
   }

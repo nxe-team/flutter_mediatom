@@ -9,14 +9,16 @@ import Foundation
 
 // 信息流防穿透
 class FlutterMediatomFeedAntiPenetration: UIView {
+    private let methodChannel: FlutterMethodChannel
     /// 广告是否被覆盖
     var isCovered: Bool = false
     /// 广告的可见区域
     var visibleBounds: CGRect = .zero
         
     init(frame: CGRect, methodChannel: FlutterMethodChannel) {
+        self.methodChannel = methodChannel
         super.init(frame: frame)
-        methodChannel.setMethodCallHandler(handle(_:result:))
+        self.methodChannel.setMethodCallHandler(handle(_:result:))
     }
     
     @available(*, unavailable)
@@ -68,5 +70,10 @@ class FlutterMediatomFeedAntiPenetration: UIView {
             }
         }
         return nil
+    }
+    
+    override func willRemoveSubview(_ subview: UIView) {
+        methodChannel.invokeMethod("onAdTerminate", arguments: nil)
+        super.willRemoveSubview(subview)
     }
 }

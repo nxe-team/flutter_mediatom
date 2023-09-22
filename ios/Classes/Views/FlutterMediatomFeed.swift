@@ -30,6 +30,8 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
     private let methodChannel: FlutterMethodChannel
     private let container: UIView
     private let manager: SFNativeManager
+    // 有渲染成功回调 避开部分模板广告无渲染成功回调
+    private var hasRenderSuccessCallback: Bool
 
     func view() -> UIView {
         container
@@ -39,6 +41,7 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
         methodChannel = FlutterMethodChannel(name: "\(FlutterMediatomChannel.feedAd.rawValue)/\(id)", binaryMessenger: messenger)
         container = FlutterMediatomFeedAntiPenetration(frame: frame, methodChannel: methodChannel)
         manager = SFNativeManager()
+        hasRenderSuccessCallback = false
         super.init()
         manager.delegate = self
         manager.mediaId = args["slotId"] as! String
@@ -101,6 +104,7 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
     // 广告渲染成功 自渲染也会回调
     func nativeAdDidRenderSuccess(withADView nativeAdView: UIView) {
         if let adView = container.subviews.first {
+            hasRenderSuccessCallback = adView.bounds.height != 0
             postMessage("onAdRenderSuccess", arguments: [
                 "height": adView.bounds.height
             ])
@@ -109,6 +113,12 @@ class FlutterMediatomFeed: NSObject, FlutterPlatformView, SFNativeDelegate {
 
     // 广告已展示
     func nativeAdDidVisible() {
+        // 兜底渲染成功回调
+        if !hasRenderSuccessCallback, let adView = container.subviews.first {
+            postMessage("onAdRenderSuccess", arguments: [
+                "height": adView.bounds.height
+            ])
+        }
         postMessage("onAdDidShow")
     }
 
