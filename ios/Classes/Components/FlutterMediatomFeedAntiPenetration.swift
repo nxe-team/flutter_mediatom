@@ -73,7 +73,19 @@ class FlutterMediatomFeedAntiPenetration: UIView {
     }
     
     override func willRemoveSubview(_ subview: UIView) {
-        methodChannel.invokeMethod("onAdTerminate", arguments: nil)
+        // 用于处理信息流加载后内容空白（非 WKWebView 回收情况）
+        // 应用终止时也会触发该回调，但 FlutterEngine 已经卸载，引起 Crash 日志
+        // https://github.com/flutter/flutter/issues/117523
+        // https://github.com/flutter/flutter/issues/126671
+        DispatchQueue.main.async {
+            // FlutterEngine is not run
+            if let flutterViewController =
+                UIApplication.shared.keyWindow?.rootViewController as? FlutterViewController, flutterViewController.engine?.isolateId == nil
+            {
+                return
+            }
+            self.methodChannel.invokeMethod("onAdTerminate", arguments: nil)
+        }
         super.willRemoveSubview(subview)
     }
 }
