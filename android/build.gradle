@@ -44,3 +44,8 @@ android {
         minSdkVersion 16
     }
 }
+
+dependencies {
+    // Mediatom 广告主包
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+}

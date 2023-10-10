@@ -4,7 +4,7 @@ class AdConfig {
   /// 应用ID
   static String get appId {
     if (Platform.isAndroid) {
-      return '';
+      return 'c1309807af3901ff';
     }
     return '294f913371434775';
   }
@@ -20,7 +20,7 @@ class AdConfig {
   /// 插屏广告
   static String get interstitialId {
     if (Platform.isAndroid) {
-      return '';
+      return '8df42ba44023db35';
     }
     return '548c7d964c146f53';
   }
