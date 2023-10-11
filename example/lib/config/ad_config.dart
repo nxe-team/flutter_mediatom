@@ -12,7 +12,7 @@ class AdConfig {
   /// 开屏广告
   static String get splashId {
     if (Platform.isAndroid) {
-      return '';
+      return '9f525ca64292750c';
     }
     return '03b2e89f588c15d5';
   }
@@ -28,7 +28,7 @@ class AdConfig {
   /// 信息流广告
   static String get feedId {
     if (Platform.isAndroid) {
-      return '';
+      return '7b0eecb255844aeb';
     }
     return '5bea84e52ecdc13a';
   }

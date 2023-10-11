@@ -1,3 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="net.niuxiaoer.flutter_mediatom">
+    package="net.niuxiaoer.flutter_mediatom">
+
+    <application>
+        <activity
+            android:name=".views.SplashAdActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashAdTheme"/>
+    </application>
+
 </manifest>

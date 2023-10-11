@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mediatom/flutter_mediatom.dart';
 import 'package:flutter_mediatom_example/config/ad_config.dart';
@@ -20,6 +22,13 @@ class _HomePageState extends State<HomePage> {
 
   /// 显示开屏广告
   void _showSplashAd() {
+    if (Platform.isAndroid) {
+      FlutterMediatom.showSplashAd(
+        slotId: AdConfig.splashId,
+        logo: 'splash_logo',
+      );
+      return;
+    }
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const SplashPage()));
   }

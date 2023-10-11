@@ -2,6 +2,7 @@ package net.niuxiaoer.flutter_mediatom
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import com.yd.saas.base.interfaces.AdViewInterstitialListener
 import com.yd.saas.config.exception.YdError
 import com.yd.saas.ydsdk.YdInterstitial
@@ -10,13 +11,23 @@ import io.flutter.Log
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import net.niuxiaoer.flutter_mediatom.constants.ChannelName
+import net.niuxiaoer.flutter_mediatom.views.SplashAdActivity
 
 /** FlutterMediatomPlugin */
 class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
+    companion object {
+        lateinit var messenger: BinaryMessenger
+
+        /** 开屏 Activity 使用 */
+        var result: Result? = null
+    }
+
     private lateinit var channel: MethodChannel
     private lateinit var context: Context
     private lateinit var activity: Activity
@@ -24,7 +35,8 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         context = flutterPluginBinding.applicationContext
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_mediatom")
+        messenger = flutterPluginBinding.binaryMessenger
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, ChannelName.PLUGIN.value)
         channel.setMethodCallHandler(this)
     }
 
@@ -67,7 +79,13 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
      * 显示开屏广告
      */
     private fun showSplashAd(args: Map<String, Any>, result: Result) {
-        result.success(true)
+        FlutterMediatomPlugin.result = result
+        val splashAd = Intent(context, SplashAdActivity::class.java).apply {
+            putExtra("slotId", args["slotId"] as String)
+            putExtra("logo", args["logo"] as String?)
+            putExtra("timeout", args["timeout"] as Int?)
+        }
+        activity.startActivity(splashAd)
     }
 
     /**
