@@ -1,6 +1,9 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mediatom/constants/platform_channel.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -82,7 +85,35 @@ class _MediatomFeedState extends State<MediatomFeed> {
   @override
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
-      return const SizedBox.shrink();
+      return PlatformViewLink(
+        viewType: PlatformChannel.feedAd.name,
+        surfaceFactory: (context, controller) {
+          return AndroidViewSurface(
+            controller: controller as AndroidViewController,
+            gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
+            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+          );
+        },
+        onCreatePlatformView: (params) {
+          return PlatformViewsService.initSurfaceAndroidView(
+            id: params.id,
+            viewType: PlatformChannel.feedAd.name,
+            layoutDirection: TextDirection.ltr,
+            creationParams: {'slotId': widget.slotId},
+            creationParamsCodec: const StandardMessageCodec(),
+            onFocus: () {
+              params.onFocusChanged(true);
+            },
+          )
+            ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+            ..addOnPlatformViewCreatedListener((id) {
+              _methodChannel =
+                  MethodChannel('${PlatformChannel.feedAd.name}/$id');
+              _methodChannel!.setMethodCallHandler(_methodCallHandler);
+            })
+            ..create();
+        },
+      );
     }
     return VisibilityDetector(
       key: _detectorKey,

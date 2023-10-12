@@ -11,7 +11,7 @@ class FeedView extends StatefulWidget {
 
 class _FeedViewState extends State<FeedView>
     with AutomaticKeepAliveClientMixin {
-  double _height = 0.1;
+  double _height = 300;
   bool _isRemove = false;
 
   void _onAdRenderSuccess(double height) {

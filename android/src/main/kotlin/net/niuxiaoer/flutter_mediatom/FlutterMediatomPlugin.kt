@@ -17,6 +17,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import net.niuxiaoer.flutter_mediatom.constants.ChannelName
+import net.niuxiaoer.flutter_mediatom.views.FeedAdViewFactory
 import net.niuxiaoer.flutter_mediatom.views.SplashAdActivity
 
 /** FlutterMediatomPlugin */
@@ -31,9 +32,11 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var channel: MethodChannel
     private lateinit var context: Context
     private lateinit var activity: Activity
+    private lateinit var flutterBinding: FlutterPlugin.FlutterPluginBinding
     private lateinit var interstitialAd: YdInterstitial
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        flutterBinding = flutterPluginBinding
         context = flutterPluginBinding.applicationContext
         messenger = flutterPluginBinding.binaryMessenger
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, ChannelName.PLUGIN.value)
@@ -46,6 +49,12 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         activity = binding.activity
+
+        // 注册信息流广告 PlatformView
+        flutterBinding.platformViewRegistry.registerViewFactory(
+            ChannelName.FEED_AD.value,
+            FeedAdViewFactory(activity, flutterBinding.binaryMessenger)
+        )
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
