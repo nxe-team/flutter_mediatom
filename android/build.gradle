@@ -14,10 +14,14 @@ buildscript {
     }
 }
 
-allprojects {
+rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
+        flatDir {
+            dirs 'libs'
+            dirs project(":flutter_mediatom").file("libs")
+        }
     }
 }
 
@@ -42,12 +46,21 @@ android {
 
     defaultConfig {
         minSdkVersion 16
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 }
 
 dependencies {
     // Mediatom 广告主包
-    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation(name: 'mediatom_2.7.2_69690416_release', ext: 'aar')
+
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
