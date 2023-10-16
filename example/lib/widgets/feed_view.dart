@@ -11,16 +11,17 @@ class FeedView extends StatefulWidget {
 
 class _FeedViewState extends State<FeedView>
     with AutomaticKeepAliveClientMixin {
-  double _height = 300;
+  double _height = 320;
+  bool _isRenderSuccess = false;
   bool _isRemove = false;
 
   void _onAdRenderSuccess(double height) {
     print('信息流渲染成功 $height');
-    if (height != _height) {
-      setState(() {
-        _height = height;
-      });
-    }
+    if (_isRenderSuccess && height == _height) return;
+    setState(() {
+      _isRenderSuccess = true;
+      _height = height;
+    });
   }
 
   void _onAdDidClose() {
@@ -33,13 +34,20 @@ class _FeedViewState extends State<FeedView>
   Widget build(BuildContext context) {
     super.build(context);
     if (_isRemove) return const SizedBox.shrink();
-    return SizedBox(
-      height: _height,
-      child: MediatomFeed(
-        slotId: AdConfig.feedId,
-        onAdRenderSuccess: _onAdRenderSuccess,
-        onAdDidClose: _onAdDidClose,
-        onAdTerminate: _onAdDidClose,
+    return AnimatedSize(
+      curve: Curves.easeInOut,
+      duration: const Duration(milliseconds: 300),
+      child: Offstage(
+        offstage: !_isRenderSuccess,
+        child: SizedBox(
+          height: _height,
+          child: MediatomFeed(
+            slotId: AdConfig.feedId,
+            onAdRenderSuccess: _onAdRenderSuccess,
+            onAdDidClose: _onAdDidClose,
+            onAdTerminate: _onAdDidClose,
+          ),
+        ),
       ),
     );
   }
