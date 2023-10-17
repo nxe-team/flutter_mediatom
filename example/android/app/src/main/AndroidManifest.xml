@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="net.niuxiaoer.flutter_mediatom_example">
 
     <!-- SDK通用 必要权限 -->
@@ -16,8 +17,10 @@
 
     <application
         android:name="${applicationName}"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="flutter_mediatom_example">
+        android:label="flutter_mediatom_example"
+        tools:replace="android:allowBackup">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

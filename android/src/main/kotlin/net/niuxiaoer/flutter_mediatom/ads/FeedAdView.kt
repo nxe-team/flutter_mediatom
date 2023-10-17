@@ -132,7 +132,7 @@ class FeedAdView(
         val nativeMaterial = nativeAd.adMaterial
         title.text = nativeMaterial.title
         description.text = nativeMaterial.description
-        action.text = nativeMaterial.callToAction.ifBlank { "查看详情" }
+        action.text = nativeMaterial.callToAction?.ifBlank { null } ?: "查看详情"
 
         // 视频广告素材
         if (nativeMaterial.adType == NativeAdConst.AD_TYPE_VIDEO && nativeMaterial.adMediaView != null) {
