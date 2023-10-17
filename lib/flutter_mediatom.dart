@@ -7,9 +7,11 @@ class FlutterMediatom {
   static final methodChannel = MethodChannel(PlatformChannel.plugin.name);
 
   /// 初始化SDK
-  static Future<bool> initSDK({required String appId}) async {
+  static Future<bool> initSDK(
+      {required String appId, bool isDebug = false}) async {
     final result = await methodChannel.invokeMethod<bool>('initSDK', {
       'appId': appId,
+      'isDebug': isDebug,
     });
     return result ?? false;
   }

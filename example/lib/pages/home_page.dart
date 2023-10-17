@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   /// 初始化SDK
   void _initSDK() {
-    FlutterMediatom.initSDK(appId: AdConfig.appId);
+    FlutterMediatom.initSDK(appId: AdConfig.appId, isDebug: true);
   }
 
   /// 显示开屏广告

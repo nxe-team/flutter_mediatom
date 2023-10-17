@@ -74,7 +74,8 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
      * 初始化SDK
      */
     private fun initSDK(args: Map<String, Any>, result: Result) {
-        YdConfig.getInstance().init(context, args["appId"] as String, "", true)
+        YdConfig.getInstance()
+            .init(context, args["appId"] as String, "", args["isDebug"] as Boolean)
         result.success(true)
     }
 
