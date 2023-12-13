@@ -59,7 +59,7 @@ android {
 
 dependencies {
     // Mediatom 广告主包
-    implementation(name: 'mediatom_2.7.2_69769694_release', ext: 'aar')
+    implementation(name: 'mediatom_2.7.4_70243952_release', ext: 'aar')
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.4.0'
