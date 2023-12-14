@@ -50,7 +50,7 @@ class FeedAdView(
     private var container: FrameLayout = FrameLayout(activity)
 
     /** 模板广告宽 px */
-    private val expressAdWidth = DeviceUtil.getMobileWidth() - DeviceUtil.dip2px(12F) * 2
+    private val expressAdWidth = DeviceUtil.getMobileWidth()
 
     /** 模板广告宽 px */
     private val expressAdHeight = (expressAdWidth * 0.28).toInt()
