@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import MSaas
 
 class FlutterMediatomSplash: FlutterMediatomBase, SFSplashDelegate {
     // 广告管理

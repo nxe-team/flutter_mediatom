@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import MSaas
 
 class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
     // 广告管理

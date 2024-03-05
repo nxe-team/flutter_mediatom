@@ -1,5 +1,4 @@
 import Flutter
-import MSaas
 import UIKit
 
 public class SwiftFlutterMediatomPlugin: NSObject, FlutterPlugin {

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import MSaas
 
 class FlutterMediatomFeedFactory: NSObject, FlutterPlatformViewFactory {
     private let messenger: FlutterBinaryMessenger
