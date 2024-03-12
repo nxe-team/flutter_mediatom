@@ -1,60 +1,57 @@
 PODS:
-  - Ads-CN (5.4.1.1):
-    - Ads-CN/BUAdSDK (= 5.4.1.1)
-  - Ads-CN/BUAdSDK (5.4.1.1):
-    - BURelyFoundation/CSJ (= 0.3.0.4)
-  - BaiduMobAdSDK (5.313)
-  - BURelyFoundation/AFNetworking (0.3.0.4)
-  - BURelyFoundation/BURelyFoundation (0.3.0.4)
-  - BURelyFoundation/CSJ (0.3.0.4):
-    - BURelyFoundation/BURelyFoundation
-    - BURelyFoundation/HM
-    - BURelyFoundation/NETWork
-  - BURelyFoundation/HM (0.3.0.4)
-  - BURelyFoundation/NETWork (0.3.0.4):
-    - BURelyFoundation/AFNetworking
+  - Ads-Fusion-CN-Beta (5.9.0.8):
+    - Ads-Fusion-CN-Beta/BUAdSDK (= 5.9.0.8)
+  - Ads-Fusion-CN-Beta/BUAdSDK (5.9.0.8)
+  - Ads-Fusion-CN-Beta/CSJMediation (5.9.0.8):
+    - Ads-Fusion-CN-Beta/BUAdSDK
+  - BaiduMobAdSDK (5.332)
+  - CSJMBaiduAdapter (5.332.0):
+    - Ads-Fusion-CN-Beta/CSJMediation (>= 5.9.0.7)
+  - CSJMGdtAdapter (4.14.60.0):
+    - Ads-Fusion-CN-Beta/CSJMediation (>= 5.9.0.7)
   - Flutter (1.0.0)
   - flutter_mediatom (0.0.1):
     - Flutter
-  - GDTMobSDK (4.14.40):
-    - GDTMobSDK/GDTMobSDK (= 4.14.40)
-  - GDTMobSDK/GDTMobSDK (4.14.40)
-  - KSAdSDK (3.3.51.1)
-  - SFAdBaiduAdapter (2.7.1.8):
-    - BaiduMobAdSDK (= 5.313)
-  - SFAdCsjAdapter (2.7.1.8):
-    - Ads-CN (= 5.4.1.1)
-  - SFAdGdtAdapter (2.7.1.8):
-    - GDTMobSDK (= 4.14.40)
-  - SFAdGromoreAdapter (2.7.1.8):
-    - SFGroMoreSDK
-  - SFAdKsAdapter (2.7.1.8):
-    - KSAdSDK (~> 3.3.51.1)
-  - SFGroMoreSDK (4.2.0.2):
-    - Ads-CN
+    - MediatomiOS/MSaas
+  - GDTMobSDK (4.14.70):
+    - GDTMobSDK/GDTMobSDK (= 4.14.70)
+  - GDTMobSDK/GDTMobSDK (4.14.70)
+  - KSAdSDK (3.3.61)
+  - MediatomiOS/MSaas (2.7.6.3)
+  - MediatomiOS/SFAdBaiduAdapter (2.7.6.3):
+    - BaiduMobAdSDK
+    - MediatomiOS/MSaas
+  - MediatomiOS/SFAdCsjAdapter (2.7.6.3):
+    - Ads-Fusion-CN-Beta
+    - Ads-Fusion-CN-Beta/CSJMediation
+    - MediatomiOS/MSaas
+  - MediatomiOS/SFAdGdtAdapter (2.7.6.3):
+    - GDTMobSDK
+    - MediatomiOS/MSaas
+  - MediatomiOS/SFAdKsAdapter (2.7.6.3):
+    - KSAdSDK
+    - MediatomiOS/MSaas
 
 DEPENDENCIES:
+  - Ads-Fusion-CN-Beta (= 5.9.0.8)
+  - CSJMBaiduAdapter
+  - CSJMGdtAdapter
   - Flutter (from `Flutter`)
   - flutter_mediatom (from `.symlinks/plugins/flutter_mediatom/ios`)
-  - SFAdBaiduAdapter
-  - SFAdCsjAdapter
-  - SFAdGdtAdapter
-  - SFAdGromoreAdapter
-  - SFAdKsAdapter
+  - MediatomiOS/SFAdBaiduAdapter
+  - MediatomiOS/SFAdCsjAdapter
+  - MediatomiOS/SFAdGdtAdapter
+  - MediatomiOS/SFAdKsAdapter
 
 SPEC REPOS:
   trunk:
-    - Ads-CN
+    - Ads-Fusion-CN-Beta
     - BaiduMobAdSDK
-    - BURelyFoundation
+    - CSJMBaiduAdapter
+    - CSJMGdtAdapter
     - GDTMobSDK
     - KSAdSDK
-    - SFAdBaiduAdapter
-    - SFAdCsjAdapter
-    - SFAdGdtAdapter
-    - SFAdGromoreAdapter
-    - SFAdKsAdapter
-    - SFGroMoreSDK
+    - MediatomiOS
 
 EXTERNAL SOURCES:
   Flutter:
@@ -63,20 +60,16 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_mediatom/ios"
 
 SPEC CHECKSUMS:
-  Ads-CN: 3508386d037d0b2c2d765c3ab9b4c98d1275ec50
-  BaiduMobAdSDK: d08ff5c4e950d769b0015c8c73771d0122105904
-  BURelyFoundation: f6dc8547c858e7f97c1a0ec31a0c81b62f657892
+  Ads-Fusion-CN-Beta: b48770eff0eea9d9b9239012b7675ebd99d26e7b
+  BaiduMobAdSDK: bda202a9984e9e2bba764091da25161ecb60b6d4
+  CSJMBaiduAdapter: 0417aa183f0ff02e7e664521cf9f05cd3a3d00f2
+  CSJMGdtAdapter: c43af23e7b1f42b6fc024ac769002205f43aa553
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_mediatom: e92e8d049d480a6ace6496313a6d75c2505b0503
-  GDTMobSDK: 58fcf958b3f70c5d60867616423f2d3e90dcfecb
-  KSAdSDK: 8c36fad105da8f7e1c9842ac2cf1afeb0f88008a
-  SFAdBaiduAdapter: e6cfd11ed645afbf078bdde21e400bc8ef1bb3d2
-  SFAdCsjAdapter: d91160129bcc9da10f14bc653c4bee29d5c37b7b
-  SFAdGdtAdapter: c03e8dadd7bc70fff764fbe6ab3edd43503f9676
-  SFAdGromoreAdapter: 119e651ea275a59e1e70ddf8fa5ab3f2a4d664f1
-  SFAdKsAdapter: 5eea70c2a4b404286e6e428c2495a4b00d44095a
-  SFGroMoreSDK: d6dac6e0bfc722b9179cec08b2b7053e2284fbe0
+  flutter_mediatom: 0ba3aef823db481d9ce156514865054f5f660a3d
+  GDTMobSDK: fb811b374943e502e5ae4e91fc7c6ef13472424e
+  KSAdSDK: 7754afd132df893c0c7a493fa878cbee7af6ff3c
+  MediatomiOS: dcb0931f81808d5d29becbdad501b78c48f4f829
 
-PODFILE CHECKSUM: 78be2944674ff1fc063fc4918c6114379dfa9b71
+PODFILE CHECKSUM: 6c2528a4069c14a47f4c21f552ee5b4542fcc13e
 
 COCOAPODS: 1.11.3

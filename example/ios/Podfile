@@ -28,19 +28,20 @@ require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelpe
 flutter_ios_podfile_setup
 
 target 'Runner' do
-  use_frameworks!
   use_modular_headers!
 
   # 穿山甲 SDK 及 Adapter
-  pod 'SFAdCsjAdapter'
+  pod 'MediatomiOS/SFAdCsjAdapter'
+  pod 'Ads-Fusion-CN-Beta', '5.9.0.8'
   # 百度 SDK 及 Adapter
-  pod 'SFAdBaiduAdapter'
+  pod 'MediatomiOS/SFAdBaiduAdapter'
+  pod 'CSJMBaiduAdapter'
   # 优量汇 SDK 及 Adapter
-  pod 'SFAdGdtAdapter'
-  # Gromore SDK 及 Adapter
-  pod 'SFAdGromoreAdapter'
+  pod 'MediatomiOS/SFAdGdtAdapter'
+  pod 'CSJMGdtAdapter'
   # 快手 SDK 及 Adapter
-  pod 'SFAdKsAdapter'
+  pod 'MediatomiOS/SFAdKsAdapter'
+#  pod 'CSJMKsAdapter'
   
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
