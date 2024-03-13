@@ -63,14 +63,15 @@ class FlutterMediatom {
   }
 
   /// 加载插屏广告
-  static Future<void> loadInterstitialAd({
+  static Future<bool> loadInterstitialAd({
     required String slotId,
     int? timeout,
-  }) {
-    return methodChannel.invokeMethod('loadInterstitialAd', {
+  }) async {
+    final result = await methodChannel.invokeMethod('loadInterstitialAd', {
       'slotId': slotId,
       'timeout': timeout,
     });
+    return result is bool ? result : false;
   }
 
   /// 显示插屏广告
