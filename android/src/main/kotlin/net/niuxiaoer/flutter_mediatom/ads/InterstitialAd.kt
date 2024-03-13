@@ -14,31 +14,28 @@ import kotlin.concurrent.schedule
 class InterstitialAd(
     private val activity: Activity,
     args: Map<String, Any>,
-    private val result: MethodChannel.Result,
+    private val loadedResult: MethodChannel.Result,
     messenger: BinaryMessenger
 ) : AdViewInterstitialListener {
-    companion object {
-        /** 启动插屏 */
-        fun launch(
-            activity: Activity,
-            args: Map<String, Any>,
-            result: MethodChannel.Result,
-            messenger: BinaryMessenger
-        ) {
-            InterstitialAd(activity, args, result, messenger)
-        }
-    }
-
     private val TAG: String = this::class.java.simpleName
 
     /** Flutter 通信 */
     private val methodChannel: MethodChannel
 
     // 已经返回结果给 Flutter，阻止多次调用 result
-    private var isFulfilled: Boolean = false
+    private var isFulfilledForLoading: Boolean = false
+
+    // 已经返回结果给 Flutter，阻止多次调用 result
+    private var isFulfilledForShowing: Boolean = false
 
     /** 插屏广告 */
     private val interstitialAd: YdInterstitial
+
+    /** 显示结果回调 */
+    private var shownResult: MethodChannel.Result? = null
+
+    /** 显示结果回调 */
+    private var shownCallback: (() -> Unit)? = null
 
     /** 兜底关闭计时器 */
     private val fallbackTimer: Timer = Timer()
@@ -59,6 +56,14 @@ class InterstitialAd(
         fallbackTimer.schedule(((timeout + 1) * 1000).toLong()) { fallback() }
     }
 
+    /** 显示插屏 */
+    fun show(activity: Activity, result: MethodChannel.Result, callback: () -> Unit) {
+        if (!interstitialAd.isReady) return;
+        interstitialAd.show(activity);
+        shownResult = result
+        shownCallback = callback
+    }
+
     /**
      * 兜底应急计划
      * 加载后无加载回调 -> 结束调用
@@ -66,8 +71,7 @@ class InterstitialAd(
     private fun fallback() {
         Log.d(TAG, "onAdFallback")
         activity.runOnUiThread {
-            postMessage("onAdFallback")
-            maybeResult(false)
+            maybeResultForLoading(false)
         }
     }
 
@@ -76,30 +80,37 @@ class InterstitialAd(
         methodChannel.invokeMethod(method, arguments)
     }
 
-    /** 结束 Flutter 调用等待 */
+    /** 结束 Flutter 加载插屏调用等待 */
     @Synchronized
-    private fun maybeResult(isOK: Boolean) {
-        if (isFulfilled) return;
-        isFulfilled = true
-        result.success(isOK)
-
-        interstitialAd.destroy()
+    private fun maybeResultForLoading(isOK: Boolean) {
+        if (isFulfilledForLoading) return;
+        isFulfilledForLoading = true
+        loadedResult.success(isOK)
     }
 
-    // 广告加载失败
-    override fun onAdFailed(error: YdError?) {
-        Log.d(TAG, "onAdFailed ${error.toString()}")
-        postMessage("onAdLoadFail")
-        maybeResult(false)
-        fallbackTimer.cancel()
+    /** 结束 Flutter 显示插屏调用等待 */
+    @Synchronized
+    private fun maybeResultShowing(isOK: Boolean) {
+        if (isFulfilledForShowing) return;
+        isFulfilledForShowing = true
+        shownResult?.success(isOK)
+        interstitialAd.destroy()
+        shownCallback?.let { it() }
     }
 
     // 广告加载成功
     override fun onAdReady() {
         Log.d(TAG, "onAdReady")
         postMessage("onAdLoadSuccess")
-        if (!interstitialAd.isReady) return;
-        interstitialAd.show()
+        maybeResultForLoading(true)
+        fallbackTimer.cancel()
+    }
+
+    // 广告加载失败
+    override fun onAdFailed(error: YdError?) {
+        Log.d(TAG, "onAdFailed ${error.toString()}")
+        postMessage("onAdLoadFail")
+        maybeResultForLoading(false)
         fallbackTimer.cancel()
     }
 
@@ -119,6 +130,6 @@ class InterstitialAd(
     override fun onAdClosed() {
         Log.d(TAG, "onAdClosed")
         postMessage("onAdDidClose")
-        maybeResult(true)
+        maybeResultShowing(true)
     }
 }

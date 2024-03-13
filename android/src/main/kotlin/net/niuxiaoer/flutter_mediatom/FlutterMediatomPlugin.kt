@@ -2,7 +2,7 @@ package net.niuxiaoer.flutter_mediatom
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
+import android.util.Log
 import com.yd.saas.ydsdk.manager.YdConfig
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -27,6 +27,9 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var messenger: BinaryMessenger
 
     private lateinit var flutterBinding: FlutterPlugin.FlutterPluginBinding
+
+    /** 插屏广告 */
+    private var interstitialAd: InterstitialAd? = null;
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         flutterBinding = flutterPluginBinding
@@ -65,7 +68,8 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         when (call.method) {
             "initSDK" -> initSDK(args, result)
             "showSplashAd" -> showSplashAd(args, result)
-            "showInterstitialAd" -> showInterstitialAd(args, result)
+            "loadInterstitialAd" -> loadInterstitialAd(args, result)
+            "showInterstitialAd" -> showInterstitialAd(result)
             else -> result.notImplemented()
         }
     }
@@ -86,10 +90,22 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         SplashAdActivity.launch(activity, args, result, messenger)
     }
 
+    /** 加载插屏广告 */
+    private fun loadInterstitialAd(args: Map<String, Any>, result: Result) {
+        interstitialAd = InterstitialAd(activity, args, result, messenger)
+    }
+
     /**
      * 显示插屏广告
      */
-    private fun showInterstitialAd(args: Map<String, Any>, result: Result) {
-        InterstitialAd.launch(activity, args, result, messenger)
+    private fun showInterstitialAd(result: Result) {
+        if (interstitialAd == null) {
+            Log.d("FlutterMediatomPlugin", "not load interstitial ad.")
+            result.success(false)
+            return;
+        }
+        interstitialAd!!.show(activity, result) {
+            interstitialAd = null;
+        }
     }
 }

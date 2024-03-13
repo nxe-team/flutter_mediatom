@@ -62,27 +62,26 @@ class FlutterMediatom {
     });
   }
 
-  /// 显示开屏广告
-  static Future<void> showInterstitialAd({
+  /// 加载插屏广告
+  static Future<void> loadInterstitialAd({
     required String slotId,
     int? timeout,
-    String? logo,
-    VoidCallback? onAdLoadSuccess,
-    VoidCallback? onAdLoadFail,
+  }) {
+    return methodChannel.invokeMethod('loadInterstitialAd', {
+      'slotId': slotId,
+      'timeout': timeout,
+    });
+  }
+
+  /// 显示插屏广告
+  static Future<void> showInterstitialAd({
     VoidCallback? onAdDidShow,
     VoidCallback? onAdDidClick,
     VoidCallback? onAdDidClose,
-    VoidCallback? onAdFallback,
   }) {
     MethodChannel(PlatformChannel.interstitialAd.name)
         .setMethodCallHandler((call) async {
       switch (call.method) {
-        case 'onAdLoadSuccess':
-          onAdLoadSuccess?.call();
-          break;
-        case 'onAdLoadFail':
-          onAdLoadFail?.call();
-          break;
         case 'onAdDidShow':
           onAdDidShow?.call();
           break;
@@ -92,14 +91,8 @@ class FlutterMediatom {
         case 'onAdDidClose':
           onAdDidClose?.call();
           break;
-        case 'onAdFallback':
-          onAdFallback?.call();
-          break;
       }
     });
-    return methodChannel.invokeMethod('showInterstitialAd', {
-      'slotId': slotId,
-      'timeout': timeout,
-    });
+    return methodChannel.invokeMethod('showInterstitialAd');
   }
 }

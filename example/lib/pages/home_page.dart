@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mediatom/flutter_mediatom.dart';
 import 'package:flutter_mediatom_example/config/ad_config.dart';
@@ -33,9 +34,25 @@ class _HomePageState extends State<HomePage> {
         context, MaterialPageRoute(builder: (context) => const SplashPage()));
   }
 
+  /// 加载插屏广告
+  Future<void> _loadInterstitialAd() async {
+    await FlutterMediatom.loadInterstitialAd(slotId: AdConfig.interstitialId);
+    BotToast.showText(text: '插屏加载完成');
+  }
+
   /// 显示插屏广告
   void _showInterstitialAd() {
-    FlutterMediatom.showInterstitialAd(slotId: AdConfig.interstitialId);
+    FlutterMediatom.showInterstitialAd(
+      onAdDidShow: () {
+        BotToast.showText(text: '插屏展示');
+      },
+      onAdDidClose: () {
+        BotToast.showText(text: '插屏关闭');
+      },
+      onAdDidClick: () {
+        BotToast.showText(text: '插屏点击');
+      },
+    );
   }
 
   /// 显示信息流广告
@@ -58,8 +75,12 @@ class _HomePageState extends State<HomePage> {
             child: const Text('开屏广告'),
           ),
           MaterialButton(
+            onPressed: _loadInterstitialAd,
+            child: const Text('加载插屏'),
+          ),
+          MaterialButton(
             onPressed: _showInterstitialAd,
-            child: const Text('插屏广告'),
+            child: const Text('展示插屏'),
           ),
           MaterialButton(
             onPressed: _showFeedAd,
