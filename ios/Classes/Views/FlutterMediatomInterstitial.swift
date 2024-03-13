@@ -12,6 +12,12 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
     private let manager: SFInterstitialManager
     // 超时时间
     private let timeout: Double
+    // 显示结果回调
+    private var shownResult: FlutterResult?
+    // 已经返回结果给 Flutter，阻止多次调用 result
+    private var isFulfilledForShowing: Bool = false
+    // 插件入口回调
+    private var callback: (() -> Void)?
 
     init(args: [String: Any], result: @escaping FlutterResult, messenger: FlutterBinaryMessenger) {
         timeout = Double(args["timeout"] as? Int ?? 6)
@@ -28,25 +34,35 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
 
         // 超时后追加1s仍未触发加载成功则自动关闭
         fallbackTimer = FlutterMediatomTimer.delay(timeout + 1) {
-            self.postMessage("onAdFallback")
             self.safeResult(false)
         }
     }
 
+    // 显示插屏
+    func show(result: @escaping FlutterResult, callback: @escaping () -> Void) {
+        shownResult = result
+        self.callback = callback
+        manager.showInterstitialAd()
+    }
+
+    // 结束 Flutter 调用等待，显示插屏行为的回调
+    func maybeResultForShowing(_ isOK: Bool) {
+        if isFulfilledForShowing { return }
+        isFulfilledForShowing = true
+        if shownResult != nil { shownResult!(isOK) }
+        if callback != nil { callback!() }
+    }
+
     // 广告加载成功
     func interstitialAdDidLoad() {
-        // 触发时已经结束 -> 不再展示
-        if isFulfilled { return }
-        postMessage("onAdLoadSuccess")
-        manager.showInterstitialAd()
         // 取消超时未回调计时
         FlutterMediatomTimer.cancel(fallbackTimer)
+        safeResult(true)
     }
 
     // 广告加载失败
     func interstitialAdDidFailed(_ error: Error) {
         print("插屏广告加载失败", error)
-        postMessage("onAdLoadFail")
         safeResult(false)
     }
 
@@ -63,6 +79,6 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
     // 广告已关闭
     func interstitialAdDidClose() {
         postMessage("onAdDidClose")
-        safeResult(true)
+        maybeResultForShowing(true)
     }
 }

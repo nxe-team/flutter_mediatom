@@ -32,13 +32,23 @@ public class SwiftFlutterMediatomPlugin: NSObject, FlutterPlugin {
                 args: args,
                 result: result,
                 messenger: SwiftFlutterMediatomPlugin.messenger!)
-        case "showInterstitialAd":
+        case "loadInterstitialAd":
             interstitialAd = FlutterMediatomInterstitial(
                 args: args,
                 result: result,
                 messenger: SwiftFlutterMediatomPlugin.messenger!)
+        case "showInterstitialAd":
+            if interstitialAd == nil {
+                result(false)
+                return
+            }
+            interstitialAd!.show(result: result, callback: clearInterstitialAd)
         default:
             result(FlutterMethodNotImplemented)
         }
+    }
+
+    private func clearInterstitialAd() {
+        interstitialAd = nil
     }
 }

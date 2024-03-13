@@ -101,7 +101,6 @@ class InterstitialAd(
     // 广告加载成功
     override fun onAdReady() {
         Log.d(TAG, "onAdReady")
-        postMessage("onAdLoadSuccess")
         maybeResultForLoading(true)
         fallbackTimer.cancel()
     }
@@ -109,7 +108,6 @@ class InterstitialAd(
     // 广告加载失败
     override fun onAdFailed(error: YdError?) {
         Log.d(TAG, "onAdFailed ${error.toString()}")
-        postMessage("onAdLoadFail")
         maybeResultForLoading(false)
         fallbackTimer.cancel()
     }

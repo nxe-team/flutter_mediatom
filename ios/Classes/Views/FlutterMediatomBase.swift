@@ -36,6 +36,7 @@ class FlutterMediatomBase: NSObject {
     func safeResult(_ isOK: Bool) {
         FlutterMediatomTimer.cancel(fallbackTimer)
         if isFulfilled { return }
+        isFulfilled = true
         result(isOK)
     }
 }
