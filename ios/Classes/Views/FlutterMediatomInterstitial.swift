@@ -18,6 +18,8 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
     private var isFulfilledForShowing: Bool = false
     // 插件入口回调
     private var callback: (() -> Void)?
+    // 已加载
+    private var isReady: Bool = false
 
     init(args: [String: Any], result: @escaping FlutterResult, messenger: FlutterBinaryMessenger) {
         timeout = Double(args["timeout"] as? Int ?? 6)
@@ -42,6 +44,10 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
     func show(result: @escaping FlutterResult, callback: @escaping () -> Void) {
         shownResult = result
         self.callback = callback
+        if !isReady {
+            maybeResultForShowing(false)
+            return
+        }
         manager.showInterstitialAd()
     }
 
@@ -58,6 +64,7 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
         // 取消超时未回调计时
         FlutterMediatomTimer.cancel(fallbackTimer)
         safeResult(true)
+        isReady = true
     }
 
     // 广告加载失败

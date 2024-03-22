@@ -58,10 +58,13 @@ class InterstitialAd(
 
     /** 显示插屏 */
     fun show(activity: Activity, result: MethodChannel.Result, callback: () -> Unit) {
-        if (!interstitialAd.isReady) return;
-        interstitialAd.show(activity);
         shownResult = result
         shownCallback = callback
+        if (!interstitialAd.isReady) {
+            maybeResultShowing(false)
+            return;
+        }
+        interstitialAd.show(activity);
     }
 
     /**
