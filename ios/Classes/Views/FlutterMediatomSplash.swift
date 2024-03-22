@@ -46,7 +46,7 @@ class FlutterMediatomSplash: FlutterMediatomBase, SFSplashDelegate {
         // 触发时已经结束 -> 不再展示
         if isFulfilled { return }
         postMessage("onAdLoadSuccess")
-        manager.showSplashAd(with: UIApplication.shared.keyWindow!)
+        manager.showSplashAd(with: UIApplication.shared.keyWindow)
         // 取消超时未回调计时
         FlutterMediatomTimer.cancel(fallbackTimer)
     }
