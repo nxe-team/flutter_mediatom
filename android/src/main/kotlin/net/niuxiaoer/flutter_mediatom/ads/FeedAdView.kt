@@ -102,7 +102,7 @@ class FeedAdView(
 
     /** 填充模板广告 */
     private fun inflateExpressAd(nativeAd: NativeAd, nativeAdView: NativeAdView) {
-        val mediaView = nativeAd.adMaterial.adMediaView
+        val mediaView = nativeAd.adMaterial.adMediaView ?: return
         nativeAdView.addView(mediaView, FrameLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT))
         nativeAd.renderAdContainer(nativeAdView, null)
         val prepareInfo = NativePrepareInfo()
