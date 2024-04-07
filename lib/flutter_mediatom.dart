@@ -100,21 +100,44 @@ class FlutterMediatom {
   /// 显示激励视频
   static showRewardVideo({
     required String slotId,
+    // 加载成功
+    VoidCallback? onAdLoadSuccess,
+    // 加载失败
+    VoidCallback? onAdLoadFail,
+    // 已展示
     VoidCallback? onAdDidShow,
-    VoidCallback? onAdDidClick,
+    // 已关闭
     VoidCallback? onAdDidClose,
+    // 播放完已验证可发放奖励
+    VoidCallback? onAdDidReward,
+    // 被点击
+    VoidCallback? onAdDidClick,
+    // 跳过 仅安卓
+    VoidCallback? onAdDidSkip,
   }) {
     MethodChannel(PlatformChannel.rewardVideo.name)
         .setMethodCallHandler((call) async {
       switch (call.method) {
+        case 'onAdLoadSuccess':
+          onAdLoadSuccess?.call();
+          break;
+        case 'onAdLoadFail':
+          onAdLoadFail?.call();
+          break;
         case 'onAdDidShow':
           onAdDidShow?.call();
+          break;
+        case 'onAdDidClose':
+          onAdDidClose?.call();
+          break;
+        case 'onAdDidReward':
+          onAdDidReward?.call();
           break;
         case 'onAdDidClick':
           onAdDidClick?.call();
           break;
-        case 'onAdDidClose':
-          onAdDidClose?.call();
+        case 'onAdDidSkip':
+          onAdDidSkip?.call();
           break;
       }
     });

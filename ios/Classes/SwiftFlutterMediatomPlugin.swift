@@ -8,6 +8,8 @@ public class SwiftFlutterMediatomPlugin: NSObject, FlutterPlugin {
     private var splashAd: FlutterMediatomSplash?
     // 插屏广告
     private var interstitialAd: FlutterMediatomInterstitial?
+    // 激励视频广告
+    private var rewardVideoAd: FlutterMediatomRewardVideo?
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         messenger = registrar.messenger()
@@ -43,6 +45,11 @@ public class SwiftFlutterMediatomPlugin: NSObject, FlutterPlugin {
                 return
             }
             interstitialAd!.show(result: result, callback: clearInterstitialAd)
+        case "showRewardVideo":
+            rewardVideoAd = FlutterMediatomRewardVideo(
+                args: args,
+                result: result,
+                messenger: SwiftFlutterMediatomPlugin.messenger!)
         default:
             result(FlutterMethodNotImplemented)
         }

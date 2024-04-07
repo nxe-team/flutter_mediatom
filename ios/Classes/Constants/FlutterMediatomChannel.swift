@@ -16,4 +16,6 @@ enum FlutterMediatomChannel: String {
     case interstitialAd = "flutter_mediatom_interstitial_ad"
     // 信息流广告通道
     case feedAd = "flutter_mediatom_feed_ad"
+    // 激励视频广告通道
+    case rewardVideo = "flutter_mediatom_reward_video_ad"
 }

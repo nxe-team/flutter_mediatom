@@ -94,13 +94,12 @@ class RewardVideoAd(
     // 广告播放完成可奖励
     override fun onVideoReward(p0: Double) {
         Log.d(TAG, "onVideoReward")
-        postMessage("onVideoReward")
+        postMessage("onAdDidReward")
     }
 
     // 广告播放完成
     override fun onVideoCompleted() {
         Log.d(TAG, "onVideoCompleted")
-        postMessage("onVideoCompleted")
     }
 
     // 广告被点击
@@ -112,6 +111,6 @@ class RewardVideoAd(
     // 广告被跳过
     override fun onSkipVideo() {
         Log.d(TAG, "onSkipVideo")
-        postMessage("onSkipVideo")
+        postMessage("onAdDidSkip")
     }
 }
