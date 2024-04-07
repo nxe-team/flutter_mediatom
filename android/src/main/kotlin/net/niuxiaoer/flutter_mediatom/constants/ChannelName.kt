@@ -12,5 +12,8 @@ enum class ChannelName(val value: String) {
     INTERSTITIAL_AD("flutter_mediatom_interstitial_ad"),
 
     // 信息流广告通道
-    FEED_AD("flutter_mediatom_feed_ad")
+    FEED_AD("flutter_mediatom_feed_ad"),
+
+    // 激励视频广告通道
+    REWARD_VIDEO("flutter_mediatom_reward_video_ad")
 }

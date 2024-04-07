@@ -32,4 +32,12 @@ class AdConfig {
     }
     return '5bea84e52ecdc13a';
   }
+
+  /// 激励视频广告
+  static String get rewardVideoId {
+    if (Platform.isAndroid) {
+      return '65ca9338f787beb6';
+    }
+    return '5ae7d154208c526e';
+  }
 }

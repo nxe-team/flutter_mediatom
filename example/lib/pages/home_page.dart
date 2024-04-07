@@ -61,6 +61,11 @@ class _HomePageState extends State<HomePage> {
         context, MaterialPageRoute(builder: (context) => const FeedDemo()));
   }
 
+  /// 显示激励视频
+  void _showRewardVideo() {
+    FlutterMediatom.showRewardVideo(slotId: AdConfig.rewardVideoId);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -84,7 +89,11 @@ class _HomePageState extends State<HomePage> {
           ),
           MaterialButton(
             onPressed: _showFeedAd,
-            child: const Text('信息流广告'),
+            child: const Text('信息流'),
+          ),
+          MaterialButton(
+            onPressed: _showRewardVideo,
+            child: const Text('激励视频'),
           ),
         ],
       ),

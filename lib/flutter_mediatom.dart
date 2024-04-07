@@ -96,4 +96,28 @@ class FlutterMediatom {
     });
     return methodChannel.invokeMethod('showInterstitialAd');
   }
+
+  /// 显示激励视频
+  static showRewardVideo({
+    required String slotId,
+    VoidCallback? onAdDidShow,
+    VoidCallback? onAdDidClick,
+    VoidCallback? onAdDidClose,
+  }) {
+    MethodChannel(PlatformChannel.rewardVideo.name)
+        .setMethodCallHandler((call) async {
+      switch (call.method) {
+        case 'onAdDidShow':
+          onAdDidShow?.call();
+          break;
+        case 'onAdDidClick':
+          onAdDidClick?.call();
+          break;
+        case 'onAdDidClose':
+          onAdDidClose?.call();
+          break;
+      }
+    });
+    return methodChannel.invokeMethod('showRewardVideo', {'slotId': slotId});
+  }
 }

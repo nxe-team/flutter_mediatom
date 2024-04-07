@@ -15,6 +15,7 @@ import io.flutter.plugin.common.MethodChannel.Result
 import net.niuxiaoer.flutter_mediatom.ads.InterstitialAd
 import net.niuxiaoer.flutter_mediatom.constants.ChannelName
 import net.niuxiaoer.flutter_mediatom.ads.FeedAdViewFactory
+import net.niuxiaoer.flutter_mediatom.ads.RewardVideoAd
 import net.niuxiaoer.flutter_mediatom.ads.SplashAdActivity
 
 /** FlutterMediatomPlugin */
@@ -70,6 +71,7 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "showSplashAd" -> showSplashAd(args, result)
             "loadInterstitialAd" -> loadInterstitialAd(args, result)
             "showInterstitialAd" -> showInterstitialAd(result)
+            "showRewardVideo" -> showRewardVideo(args, result)
             else -> result.notImplemented()
         }
     }
@@ -107,5 +109,12 @@ class FlutterMediatomPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         interstitialAd!!.show(activity, result) {
             interstitialAd = null;
         }
+    }
+
+    /**
+     * 显示激励视频广告
+     */
+    private fun showRewardVideo(args: Map<String, Any>, result: Result) {
+        RewardVideoAd.launch(activity, args, result, messenger)
     }
 }
