@@ -20,6 +20,9 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
     private var callback: (() -> Void)?
     // 已加载
     private var isReady: Bool = false
+    // 兜底显示计时器
+    // 调用展示后，无后续时，结束Flutter调用
+    private var showFallbackTimer: GCDTask?
 
     init(args: [String: Any], result: @escaping FlutterResult, messenger: FlutterBinaryMessenger) {
         timeout = Double(args["timeout"] as? Int ?? 6)
@@ -39,6 +42,10 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
             self.safeResult(false)
         }
     }
+    
+    deinit {
+        FlutterMediatomTimer.cancel(showFallbackTimer)
+    }
 
     // 显示插屏
     func show(result: @escaping FlutterResult, callback: @escaping () -> Void) {
@@ -47,6 +54,9 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
         if !isReady {
             maybeResultForShowing(false)
             return
+        }
+        showFallbackTimer = FlutterMediatomTimer.delay(5) {
+            self.maybeResultForShowing(false)
         }
         manager.showInterstitialAd()
     }
@@ -76,6 +86,7 @@ class FlutterMediatomInterstitial: FlutterMediatomBase, SFInterstitialDelegate {
     // 广告已展示
     func interstitialAdDidVisible() {
         postMessage("onAdDidShow")
+        FlutterMediatomTimer.cancel(showFallbackTimer)
     }
 
     // 广告被点击

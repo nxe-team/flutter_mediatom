@@ -40,6 +40,12 @@ class InterstitialAd(
     /** 兜底关闭计时器 */
     private val fallbackTimer: Timer = Timer()
 
+    /**
+     * 兜底显示计时器
+     * 调用展示后，无广告展示，结束调用
+     */
+    private val showFallbackTimer: Timer = Timer()
+
     init {
         methodChannel = MethodChannel(messenger, ChannelName.INTERSTITIAL_AD.value)
         val timeout = args["timeout"] as Int? ?: 6
@@ -64,6 +70,7 @@ class InterstitialAd(
             maybeResultShowing(false)
             return;
         }
+        showFallbackTimer.schedule(5000L) { maybeResultShowing(false) }
         interstitialAd.show(activity);
     }
 
@@ -119,6 +126,7 @@ class InterstitialAd(
     override fun onAdDisplay() {
         Log.d(TAG, "onAdDisplay")
         postMessage("onAdDidShow")
+        showFallbackTimer.cancel();
     }
 
     // 广告被点击

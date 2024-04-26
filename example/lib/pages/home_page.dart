@@ -41,8 +41,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   /// 显示插屏广告
-  void _showInterstitialAd() {
-    FlutterMediatom.showInterstitialAd(
+  Future<void> _showInterstitialAd() async {
+    await FlutterMediatom.showInterstitialAd(
       onAdDidShow: () {
         BotToast.showText(text: '插屏展示');
       },
@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
         BotToast.showText(text: '插屏点击');
       },
     );
+    BotToast.showText(text: '调用结束');
   }
 
   /// 显示信息流广告
