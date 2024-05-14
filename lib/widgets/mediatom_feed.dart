@@ -12,6 +12,11 @@ class MediatomFeed extends StatefulWidget {
   /// 广告位ID
   final String slotId;
 
+  /// 使用混合模式
+  ///
+  /// 默认 false
+  final bool useHybridComposition;
+
   /// 广告加载成功
   final VoidCallback? onAdLoadSuccess;
 
@@ -36,6 +41,7 @@ class MediatomFeed extends StatefulWidget {
   const MediatomFeed({
     super.key,
     required this.slotId,
+    this.useHybridComposition = false,
     this.onAdRenderSuccess,
     this.onAdLoadSuccess,
     this.onAdLoadFail,
@@ -82,37 +88,49 @@ class _MediatomFeedState extends State<MediatomFeed> {
     }
   }
 
+  /// 视图创建
+  void _onPlatformViewCreated(int id) {
+    _methodChannel = MethodChannel('${PlatformChannel.feedAd.name}/$id');
+    _methodChannel!.setMethodCallHandler(_methodCallHandler);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
-      return PlatformViewLink(
+      if (widget.useHybridComposition) {
+        return PlatformViewLink(
+          viewType: PlatformChannel.feedAd.name,
+          surfaceFactory: (context, controller) {
+            return AndroidViewSurface(
+              controller: controller as AndroidViewController,
+              gestureRecognizers: const <
+                  Factory<OneSequenceGestureRecognizer>>{},
+              hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+            );
+          },
+          onCreatePlatformView: (params) {
+            return PlatformViewsService.initSurfaceAndroidView(
+              id: params.id,
+              viewType: PlatformChannel.feedAd.name,
+              layoutDirection: TextDirection.ltr,
+              creationParams: {'slotId': widget.slotId},
+              creationParamsCodec: const StandardMessageCodec(),
+              onFocus: () {
+                params.onFocusChanged(true);
+              },
+            )
+              ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+              ..addOnPlatformViewCreatedListener(_onPlatformViewCreated)
+              ..create();
+          },
+        );
+      }
+      return AndroidView(
         viewType: PlatformChannel.feedAd.name,
-        surfaceFactory: (context, controller) {
-          return AndroidViewSurface(
-            controller: controller as AndroidViewController,
-            gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
-            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-          );
-        },
-        onCreatePlatformView: (params) {
-          return PlatformViewsService.initSurfaceAndroidView(
-            id: params.id,
-            viewType: PlatformChannel.feedAd.name,
-            layoutDirection: TextDirection.ltr,
-            creationParams: {'slotId': widget.slotId},
-            creationParamsCodec: const StandardMessageCodec(),
-            onFocus: () {
-              params.onFocusChanged(true);
-            },
-          )
-            ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
-            ..addOnPlatformViewCreatedListener((id) {
-              _methodChannel =
-                  MethodChannel('${PlatformChannel.feedAd.name}/$id');
-              _methodChannel!.setMethodCallHandler(_methodCallHandler);
-            })
-            ..create();
-        },
+        layoutDirection: TextDirection.ltr,
+        creationParams: {'slotId': widget.slotId},
+        creationParamsCodec: const StandardMessageCodec(),
+        onPlatformViewCreated: _onPlatformViewCreated,
       );
     }
     return VisibilityDetector(
@@ -122,10 +140,7 @@ class _MediatomFeedState extends State<MediatomFeed> {
         layoutDirection: TextDirection.ltr,
         creationParams: {'slotId': widget.slotId},
         creationParamsCodec: const StandardMessageCodec(),
-        onPlatformViewCreated: (int id) {
-          _methodChannel = MethodChannel('${PlatformChannel.feedAd.name}/$id');
-          _methodChannel!.setMethodCallHandler(_methodCallHandler);
-        },
+        onPlatformViewCreated: _onPlatformViewCreated,
       ),
       onVisibilityChanged: (VisibilityInfo visibilityInfo) {
         if (!mounted) return;
