@@ -1,55 +1,69 @@
 PODS:
-  - Ads-Fusion-CN-Beta (5.9.0.8):
-    - Ads-Fusion-CN-Beta/BUAdSDK (= 5.9.0.8)
-  - Ads-Fusion-CN-Beta/BUAdSDK (5.9.0.8)
-  - Ads-Fusion-CN-Beta/CSJMediation (5.9.0.8):
-    - Ads-Fusion-CN-Beta/BUAdSDK
-  - BaiduMobAdSDK (5.332)
-  - CSJMBaiduAdapter (5.332.0):
-    - Ads-Fusion-CN-Beta/CSJMediation (>= 5.9.0.7)
-  - CSJMGdtAdapter (4.14.60.0):
-    - Ads-Fusion-CN-Beta/CSJMediation (>= 5.9.0.7)
+  - Ads-CN-Beta (6.2.0.0):
+    - Ads-CN-Beta/BUAdSDK (= 6.2.0.0)
+  - Ads-CN-Beta/BUAdSDK (6.2.0.0)
+  - Ads-CN-Beta/CSJMediation (6.2.0.0):
+    - Ads-CN-Beta/BUAdSDK
+  - BaiduMobAdSDK (5.351)
   - Flutter (1.0.0)
   - flutter_mediatom (0.0.1):
     - Flutter
-    - MediatomiOS/MSaas
-  - GDTMobSDK (4.14.70):
-    - GDTMobSDK/GDTMobSDK (= 4.14.70)
-  - GDTMobSDK/GDTMobSDK (4.14.70)
-  - KSAdSDK (3.3.61)
-  - MediatomiOS/MSaas (2.7.6.3)
-  - MediatomiOS/SFAdBaiduAdapter (2.7.6.3):
+    - MediatomiOS/MSaas (= 2.7.7.6)
+  - GDTMobSDK (4.14.76):
+    - GDTMobSDK/GDTMobSDK (= 4.14.76)
+  - GDTMobSDK/GDTMobSDK (4.14.76)
+  - GMBaiduAdapter-Beta (5.35.1):
+    - Ads-CN-Beta/CSJMediation (>= 6.2.0.0)
+  - GMGdtAdapter-Beta (4.14.71.0):
+    - Ads-CN-Beta/CSJMediation (>= 6.1.0.9)
+  - GMKsAdapter-Beta (3.3.64.0.0):
+    - Ads-CN-Beta/CSJMediation (>= 6.2.0.0)
+  - JADYun (2.5.12)
+  - KSAdSDK (3.3.65)
+  - MediatomiOS/MSaas (2.7.7.6)
+  - MediatomiOS/SFAdBaiduAdapter (2.7.7.6):
     - BaiduMobAdSDK
     - MediatomiOS/MSaas
-  - MediatomiOS/SFAdCsjAdapter (2.7.6.3):
-    - Ads-Fusion-CN-Beta
-    - Ads-Fusion-CN-Beta/CSJMediation
+  - MediatomiOS/SFAdCsjAdapter (2.7.7.6):
+    - Ads-CN-Beta/BUAdSDK
+    - Ads-CN-Beta/CSJMediation
     - MediatomiOS/MSaas
-  - MediatomiOS/SFAdGdtAdapter (2.7.6.3):
+  - MediatomiOS/SFAdGdtAdapter (2.7.7.6):
     - GDTMobSDK
     - MediatomiOS/MSaas
-  - MediatomiOS/SFAdKsAdapter (2.7.6.3):
+  - MediatomiOS/SFAdJztAdapter (2.7.7.6):
+    - JADYun
+    - MediatomiOS/MSaas
+  - MediatomiOS/SFAdKsAdapter (2.7.7.6):
     - KSAdSDK
     - MediatomiOS/MSaas
 
 DEPENDENCIES:
-  - Ads-Fusion-CN-Beta (= 5.9.0.8)
-  - CSJMBaiduAdapter
-  - CSJMGdtAdapter
+  - Ads-CN-Beta (= 6.2.0.0)
+  - BaiduMobAdSDK (= 5.351)
   - Flutter (from `Flutter`)
   - flutter_mediatom (from `.symlinks/plugins/flutter_mediatom/ios`)
+  - GDTMobSDK (= 4.14.76)
+  - GMBaiduAdapter-Beta (= 5.35.1)
+  - GMGdtAdapter-Beta (= 4.14.71.0)
+  - GMKsAdapter-Beta (= 3.3.64.0.0)
+  - JADYun (= 2.5.12)
+  - KSAdSDK (= 3.3.65)
   - MediatomiOS/SFAdBaiduAdapter
   - MediatomiOS/SFAdCsjAdapter
   - MediatomiOS/SFAdGdtAdapter
+  - MediatomiOS/SFAdJztAdapter
   - MediatomiOS/SFAdKsAdapter
 
 SPEC REPOS:
   trunk:
-    - Ads-Fusion-CN-Beta
+    - Ads-CN-Beta
     - BaiduMobAdSDK
-    - CSJMBaiduAdapter
-    - CSJMGdtAdapter
     - GDTMobSDK
+    - GMBaiduAdapter-Beta
+    - GMGdtAdapter-Beta
+    - GMKsAdapter-Beta
+    - JADYun
     - KSAdSDK
     - MediatomiOS
 
@@ -60,16 +74,18 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_mediatom/ios"
 
 SPEC CHECKSUMS:
-  Ads-Fusion-CN-Beta: b48770eff0eea9d9b9239012b7675ebd99d26e7b
-  BaiduMobAdSDK: bda202a9984e9e2bba764091da25161ecb60b6d4
-  CSJMBaiduAdapter: 0417aa183f0ff02e7e664521cf9f05cd3a3d00f2
-  CSJMGdtAdapter: c43af23e7b1f42b6fc024ac769002205f43aa553
+  Ads-CN-Beta: 7a82a9a84e5af6b37d78ea1364648f652df26020
+  BaiduMobAdSDK: f89cebc91fabe453935dd878ab50cd9113d9f258
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_mediatom: 0ba3aef823db481d9ce156514865054f5f660a3d
-  GDTMobSDK: fb811b374943e502e5ae4e91fc7c6ef13472424e
-  KSAdSDK: 7754afd132df893c0c7a493fa878cbee7af6ff3c
-  MediatomiOS: dcb0931f81808d5d29becbdad501b78c48f4f829
+  flutter_mediatom: 05b20e814cd4deb8b893a5983a5522aefb065cf5
+  GDTMobSDK: 037a4e91a91d277d7864fa0f413599acecc6e8f4
+  GMBaiduAdapter-Beta: e0595477ccde9bd8af59a88bfccc9c05851967d3
+  GMGdtAdapter-Beta: f222a1c6c9a762513c24e24c9bbc4b2dc9b51aaf
+  GMKsAdapter-Beta: 39a985c9e198fc449e47ae0f0cdea085973fdf3a
+  JADYun: 0a65cca094e9e24d40e9575a82146e5391429bbe
+  KSAdSDK: b7f90537041c6dbff0f1f8de52ea222e01149a3d
+  MediatomiOS: da3f5e8f481a1a50b4983dd2cb0efec964273eef
 
-PODFILE CHECKSUM: 6c2528a4069c14a47f4c21f552ee5b4542fcc13e
+PODFILE CHECKSUM: e4afd71f8186366b580957608502fe4d325d7711
 
 COCOAPODS: 1.11.3

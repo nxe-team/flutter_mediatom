@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '11.0'
+platform :ios, '11.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -32,16 +32,22 @@ target 'Runner' do
 
   # 穿山甲 SDK 及 Adapter
   pod 'MediatomiOS/SFAdCsjAdapter'
-  pod 'Ads-Fusion-CN-Beta', '5.9.0.8'
+  pod 'Ads-CN-Beta', '6.2.0.0'
   # 百度 SDK 及 Adapter
   pod 'MediatomiOS/SFAdBaiduAdapter'
-  pod 'CSJMBaiduAdapter'
+  pod 'GMBaiduAdapter-Beta', '5.35.1'
+  pod 'BaiduMobAdSDK', '5.351'
   # 优量汇 SDK 及 Adapter
   pod 'MediatomiOS/SFAdGdtAdapter'
-  pod 'CSJMGdtAdapter'
+  pod 'GMGdtAdapter-Beta', '4.14.71.0'
+  pod 'GDTMobSDK', '4.14.76'
   # 快手 SDK 及 Adapter
   pod 'MediatomiOS/SFAdKsAdapter'
-#  pod 'CSJMKsAdapter'
+  pod 'GMKsAdapter-Beta', '3.3.64.0.0'
+  pod 'KSAdSDK', '3.3.65'
+  # JAD
+  pod 'MediatomiOS/SFAdJztAdapter'
+  pod 'JADYun', '2.5.12'
   
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
