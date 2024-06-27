@@ -17,7 +17,7 @@ A new Flutter plugin project.
   s.dependency 'Flutter'
   s.platform = :ios, '11.0'
 
-  s.dependency 'MediatomiOS/MSaas', '2.7.7.6'
+  s.dependency 'MediatomiOS/MSaas', '2.7.8'
   s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
 
   # Flutter.framework does not contain a i386 slice.
